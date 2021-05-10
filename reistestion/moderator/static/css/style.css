@@ -1,0 +1,163 @@
+body{
+	font-family: 'Noto Sans', sans-serif;
+	background: url(../imj/bg.png);
+	background-size: cover;
+}
+*{
+	margin: 0;
+	padding: 0;
+}
+a{
+	text-decoration: none;
+}
+li{
+	display: flex;
+	list-style: none;
+}
+header{
+	background: #0093D5;
+	width: 69%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.7);
+	padding: 10px 0 0;
+	margin: 0 auto;
+	border-radius: 0 0 20px 20px;
+}
+.header-container{
+	width: 100%;
+	margin: 0 auto;
+	display: flex;
+}
+.header-container a{
+	color: #fff;
+	font-size: 16px;
+	padding: 15px 11px;
+}
+.header-container a:hover{
+	background: #0087c3
+}
+.logo{
+	margin-left: -85%;
+}
+.header-container hr{
+	border: none;
+	background-color: #fff;
+	color: #fff;
+	height: 1px;
+	width: 80%;
+	margin: 44px 10%;
+}
+#menu-checkbox{
+	display: none;
+}
+ul{
+	display: flex;
+}
+nav{
+	margin-top: 45px;
+	margin-left: -3%;
+}
+
+.top-slide{
+	background: linear-gradient(to top,#004e88, #48addc);
+	border-radius: 20px;
+	opacity: 95%;
+	width: 50%;
+	padding: 20px 0 30px;
+	margin: 2% auto 0;
+}
+.top-container{
+	display: flex;
+	justify-content: space-between;
+	margin: 0 auto;
+	width: 60%;
+}
+.top-slide h2{
+	color: #fff;
+	font-size: 28px;
+	padding: 0 0 20px;
+	text-align: center;
+}
+.top-register p{
+}
+.top-register select{
+}
+
+footer{
+    background: #003C6D;
+    width: 69%;
+    box-shadow: 0 0 10px rgba(0,0,0,0.7);
+    padding: 20px 0 20px;
+    margin: 0 auto;
+    border-radius: 20px 20px 0 0;
+    margin-top: 14.6%;
+}
+.footer-container a{
+    color: #fff;
+    font-size: 16px;
+    margin-left: 45%;
+}
+
+
+
+
+@media screen and (max-width: 420px) {
+	header{
+	background: #0093D5;
+	width: 100%;
+	box-shadow: 0 0 10px rgba(0,0,0,0.7);
+	padding: 20px 0 20px;
+	margin: 0 auto;
+	border-radius: 0 0 0 0;
+	}
+	.header-container{
+	width: 120%;
+	display: flex;
+	justify-content: space-around;
+	}
+	.header-container hr{
+	display: none;
+	}
+	.logo{
+	margin-left: -20%;
+	}
+	.main-menu{
+		display: none;
+	}
+	.main-menu li{
+		width: 100%;
+		display: block;
+		font-size: 12px;
+	}
+	.main-menu a{
+		display: block;
+		font-size: 16px;
+		padding: 15px 11px;
+	}
+	.toggle-button{
+		text-align: center;
+		display: block;
+		cursor: pointer;
+		color: #fff;
+		margin-top: -35px;
+	}
+	.toggle-button:after{
+		content: attr(data-open);
+		display: block;
+	}
+	#menu-checkbox:checked + nav[role="navigation"] .main-menu{
+		display: block;
+	}
+
+	#menu-checkbox:checked + nav[role="navigation"] .toggle-button:after{
+		content: attr(data-close);
+	}
+	.header-container a{
+		margin-right: -200px;
+	}
+	.main-menu{
+		position: relative;
+		top: 20px;
+		right: 200px;
+	}
+
+}

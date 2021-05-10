@@ -1,0 +1,22 @@
+{% extends 'moderator/layout.html' %}
+
+
+{% block title %}Новости сайта{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>Новости сайта</h1>
+        {% if news %}
+            {% for el in news %}
+            <div class = "alert">
+                <h3>{{ el.title }}</h3>
+                <p>{{ el.full_text }}</p>
+                <p id="dates">{{ el.date }}</p>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет записей</p>
+        {% endif %}
+        {# comments #}
+    </div>
+{% endblock %}

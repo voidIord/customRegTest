@@ -1,0 +1,22 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Группы{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>Группы</h1>
+        {% if gnew %}
+            {% for el in gnew %}
+            <div class = "alert">
+                <h3>{{ el.GroupName }}</h3>
+                <a href="{% url 'group-detail' el.id %}"><button class="but-bacg">Просмотреть состав группы</button></a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет групп</p>
+        {% endif %}
+        {# comments #}
+        <a href="{% url 'group' %}"><li><button class="btn btn-info">Добавить Группу</button></li></a>
+    </div>
+{% endblock %}

@@ -1,0 +1,15 @@
+<{% extends 'main/layout.html' %}
+
+
+{% block title %}Форма для изменения групп{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для изменения групп</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ gform.GroupName }}<br>
+            <button type="submit" class="btn btn-success">Изменить группу</button>
+        </form>
+    </div>
+{% endblock %}

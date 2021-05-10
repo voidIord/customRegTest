@@ -1,0 +1,14 @@
+{% extends 'main/layout.html' %}
+
+
+{% block title %}Форма для создания логов{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для удаления группы</h1>
+        <form method="post">
+            {% csrf_token %}
+            <button type="submit" class="btn btn-success">Удалить группу</button>
+        </form>
+    </div>
+{% endblock %}
