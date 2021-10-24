@@ -1,5 +1,6 @@
 from django.db import models
 from django.contrib.auth.models import AbstractBaseUser, BaseUserManager
+import datetime
 
 
 class MyAccountManager(BaseUserManager):
@@ -40,7 +41,7 @@ class MyAccountManager(BaseUserManager):
 class Account(AbstractBaseUser):
     id = models.AutoField(primary_key=True)
     email = models.EmailField(verbose_name="email", max_length=60, unique=True)
-    username = models.CharField(max_length=30, unique=False)
+    username = models.CharField(max_length=255, unique=False)
     gender = models.CharField(max_length=10, null=True, blank=True)
     phone_no = models.CharField(max_length=15, null=True, blank=True)
     prof_img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, null=True,
@@ -52,11 +53,6 @@ class Account(AbstractBaseUser):
     is_active = models.BooleanField(default=True)
     is_staff = models.BooleanField(default=False)
     is_superuser = models.BooleanField(default=False)
-
-    is_teacher = models.BooleanField(default=False)
-    first_name = models.TextField(verbose_name='name', max_length=32)
-    last_name = models.TextField(verbose_name='surname', max_length=32)
-    group = models.ForeignKey("GroupNames", on_delete=models.PROTECT, null=True, verbose_name='group_key')
 
     USERNAME_FIELD = 'email'
     REQUIRED_FIELDS = ['username', ]
@@ -73,6 +69,14 @@ class Account(AbstractBaseUser):
     # Does this user have permission to view this app? (ALWAYS YES FOR SIMPLICITY)
     def has_module_perms(self, app_label):
         return True
+
+
+class Student(models.Model):
+    id_students: models.ForeignKey(Account, on_delete=models.CASCADE)
+    group = models.ForeignKey("GroupNames", on_delete=models.PROTECT, null=True, verbose_name='group_key')
+
+class Teacher(models.Model):
+    id: models.ForeignKey(Account, on_delete=models.CASCADE)
 
 
 class GroupNames(models.Model):
@@ -102,6 +106,7 @@ class SubjectsNames(models.Model):
 
 class ModelsNames(models.Model):
     ModelName = models.CharField('Название модуля', max_length=64)
+    week = models.ForeignKey('Week', on_delete=models.CASCADE, null=True)
 
     def __str__(self):
         return self.ModelName
@@ -123,9 +128,18 @@ class ThemesNames(models.Model):
 
 
 class TasksNames(models.Model):
-    TaskName = models.CharField('Название задания', max_length=64)
-    TaskName = models.TextField('Описание задания', max_length=1024)
-    TaskName = models.IntegerField('Максимальный балл за задание')
+    name = models.CharField('Название задания', max_length=64)
+    brief = models.TextField('Описание задания', max_length=1024, null=True)
+    max_score = models.IntegerField('Максимальный балл за задание')
+
+    value = models.IntegerField('Ценнсть задания')
+
+    start_date = models.DateTimeField()
+    end_date = models.DateTimeField()
+
+    kind = models.CharField(max_length=40)
+    
+    lesson = models.ForeignKey("LessonsNames", on_delete=models.CASCADE)
 
     def __str__(self):
         return self.TaskName
@@ -138,6 +152,7 @@ class TasksNames(models.Model):
 class LessonsNames(models.Model):
     LessonName = models.DateTimeField('Дата и время проведения пары')
     TaskName = models.IntegerField('Номер пары')
+    date = models.DateTimeField(null=True,)
 
     def __str__(self):
         return self.LessonName
@@ -146,18 +161,25 @@ class LessonsNames(models.Model):
         verbose_name = 'Пара'
         verbose_name_plural = 'Пары'
 
+class Week(models.Model):
+    term = models.ForeignKey('Term', on_delete=models.PROTECT)
 
 class GroupsSubjects(models.Model):
     Group = models.ForeignKey("GroupNames", on_delete=models.PROTECT, null=True, verbose_name='Group_key')
     Subject = models.ForeignKey("SubjectsNames", on_delete=models.PROTECT, null=True, verbose_name='Subject_key')
-
+    term = models.ForeignKey("Term", on_delete=models.PROTECT, null=True, verbose_name="term")
     def __str__(self):
         return self.Subject
 
 
+class Term(models.Model):
+    start = models.DateTimeField()
+    end = models.DateTimeField()
+
+
 class SubjectsTeachers(models.Model):
     Subject = models.ForeignKey("SubjectsNames", on_delete=models.PROTECT, null=True, verbose_name='Subject_key')
-    Teacher = models.ForeignKey("Account", on_delete=models.PROTECT, null=True, verbose_name='Teacher_key')
+    Teacher = models.ForeignKey("Teacher", on_delete=models.PROTECT, null=True, verbose_name='Teacher_key')
 
     def __str__(self):
         return self.Teacher
@@ -197,7 +219,7 @@ class LessonsTasks(models.Model):
 
 class TasksStudents(models.Model):
     Task = models.ForeignKey("TasksNames", on_delete=models.PROTECT, null=True, verbose_name='Task_key')
-    Student = models.ForeignKey("Account", on_delete=models.PROTECT, null=True, verbose_name='Students_key')
+    Student = models.ForeignKey("Student", on_delete=models.PROTECT, null=True, verbose_name='Students_key')
     Mark = models.IntegerField("Оценка")
 
     def __str__(self):
