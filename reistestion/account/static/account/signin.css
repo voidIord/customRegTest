@@ -2,6 +2,8 @@
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 /*------*/
 
+
+
 *{
     margin: 0;
     padding: 0;
@@ -15,9 +17,12 @@ html{
 body{
     padding: 1rem;
     text-align: center;
-    /* background-image: url("https://ibgnews.com/wp-content/uploads/2016/05/Kashmir.jpg"); */
+    /* background-image: url("images/bg.png"); */
     background-repeat: no-repeat;
     background-size: cover;
+    background: url("images/bg.png");
+    background-size: 100%;
+
 }
 
 a{
@@ -26,7 +31,7 @@ a{
 }
 
 h1{
-    color: #ff334c;
+    color: #ffffff;
     font-family: 'Raleway', 'Roboto' , sans-serif;
 }
 
@@ -36,20 +41,20 @@ h2{
     font-family: 'Roboto', sans-serif;
 }
 
-.signin 		{ 
-    background-color: rgba(255, 255, 255, 0.95);
-    border-radius: 25px;
+.signin 		{
+    background: linear-gradient(to top,#004e88, #48addc);
+    border-radius: 20px;
     font-family:'Roboto';
-    width: 40%; 
-
-    margin:30px auto 0; 
+    width: 45%;
+    opacity: 95%;
+    margin:0px auto 0;
     display:block; 
-    padding:10px 50px 50px;
+    padding:30px 70px 30px;
   }
 
 
   form{
-    margin-top: 2rem;
+    margin-top: 10px;
 }
 
 /* form starting stylings ------------------------------- */
@@ -80,7 +85,7 @@ hgroup {
     position: absolute;
     left: 0;
     text-align: left;
-    color: rgb(37, 37, 236);
+    color: #FFDB73;
 }
 
 
@@ -103,7 +108,7 @@ input:focus { outline: none; }
 /* Label */
 
 label.anim-label, #main-label-gender {
-	color: #999; 
+	color: #999;
 	font-size: 18px;
 	font-weight: normal;
 	position: absolute;
@@ -120,7 +125,7 @@ input:focus ~ label.anim-label, input.used ~ label.anim-label {
 	top: -20px;
   transform: scale(.75); left: -2px;
 	/* font-size: 14px; */
-	color: #ff334c;
+	color: #ffffff;
 }
 
 
@@ -136,9 +141,9 @@ input:focus ~ label.anim-label, input.used ~ label.anim-label {
 	content: '';
 	height: 2px; 
 	width: 0;
-	bottom: 1px; 
+	bottom: 0px;
 	position: absolute;
-	background: #ff334c; 
+	background: #002C54;
 	transition: all 0.2s ease;
 }
 
@@ -175,7 +180,7 @@ input:focus ~ .highlight {
 /* Animations */
 
 @keyframes inputHighlighter {
-	from { background: #ff334c; }
+	from { background: #ffffff; }
 	to 	{ width: 0; background: transparent; }
 }
 
@@ -189,7 +194,7 @@ input:focus ~ .highlight {
   margin: .3em 0 1em 0;
   width: 40%;
   vertical-align: middle;
-  color: #fff;
+  color: #fffdfc;
   font-family: 'Roboto',sans-serif;
   font-size: 16px;
   line-height: 20px;
@@ -208,28 +213,30 @@ input:focus ~ .highlight {
 /* Button modifiers */
 
 .buttonBlue {
-  background: #ff334c;
-  text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+
+  background: #fcb241;
+    text-shadow: 1px 1px 2px black;
+    border-radius: 8px;
 }
 
 .buttonSec {
-  border: 3px solid #ff334c; 
+  border: 3px solid #fcb241;
 }
 
 .buttonSec a{
-  color: #ff334c;
+  color: #ffffff;
   text-decoration: none;
 }
 
 .buttonSec:hover {
-  border: 3px solid #b82536;
+  border: 3px solid #f8a015;
 }
 
 .buttonSec:hover a{
-  color: #b82536;
+  color: #cecece;
 }
 
-.buttonBlue:hover { background: #b82536; }
+.buttonBlue:hover { background: #f8a015; }
 
 
 /* Ripples container */
@@ -351,11 +358,12 @@ input:focus ~ .highlight {
 
 ::-webkit-file-upload-button{
   border: none;
-  color: white;
+  color: #ffffff;
   padding: 1rem;
   cursor: pointer;
-  background: #ff334c;
-  text-shadow: 1px 1px 0 rgba(39, 110, 204, .5);
+  background: #ffae32;
+  text-shadow: 1px 1px 2px black;
+    border-radius: 5px;
 }
 
 /*Gender*/
@@ -374,7 +382,7 @@ input[type="radio"] {
 }
 
 label.gender-label {
-  color: #999;
+  color: #ffffff;
   position: relative;
   margin-right: 1em;
   padding-left: 2em;
@@ -392,7 +400,7 @@ label.gender-label:before {
   display: block;
   width: 1.4em;
   height: 1.4em;
-  border: 2px solid #ff334c;
+  border: 2px solid #ffffff;
   border-radius: .25em;
   z-index: -1;
 }
@@ -404,13 +412,13 @@ input[type="radio"] + label.gender-label::before {
 /* Checked */
 input[type="radio"]:checked + label.gender-label {
   padding-left: 1em;
-  color: #ffffff;
+  color: #002C54;
 }
 input[type="radio"]:checked + label.gender-label:before {
   top: 0;
   width: 100%;
   height: 2em;
-  background: #ff334c;
+  background: #ffffff;
 }
 
 /* Transition */
@@ -420,6 +428,11 @@ label.gender-label::before {
   transition: .25s all ease;
 }
 
+.main-label-gender{
+  top: unset;
+    color: #ffffff;
+}
 #main-label-gender{
   top: unset;
+    color: #ffffff;
 }

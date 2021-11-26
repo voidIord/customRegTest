@@ -1,4 +1,4 @@
-{% extends 'main/layout.html' %}
+{% extends 'moderator/layout.html' %}
 
 
 {% block title %}{{arti.GroupName}}{% endblock %}
@@ -6,7 +6,14 @@
 {% block content %}
     <div class = "features">
         <h1>{{arti.GroupName}}</h1>
-
-
+        {% if qnew %}
+            {% for el in qnew %}
+            <div class = "alert">
+                <h3>{{ el. }}</h3>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет пользователей</p>
+        {% endif %}
     </div>
 {% endblock %}

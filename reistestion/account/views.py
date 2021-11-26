@@ -2,8 +2,8 @@ from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
-from .models import GroupNames
-from .forms import GroupForm
+from .models import GroupNames, Semester
+from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
 from .models import Account
 
@@ -149,3 +149,23 @@ def group(request):
     }
 
     return render(request, 'account/group.html', gdata)
+
+
+def table_view(request):
+    if request.method == 'POST':
+        qform = TableUpdateForm(request.POST)
+        if qform.is_valid():
+            qform.save()
+            return redirect('/account')
+
+    qform = TableUpdateForm()
+
+    qdata = {
+        'qform': qform,
+    }
+
+    return render(request, 'account/table.html', qdata)
+
+
+
+

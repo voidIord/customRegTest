@@ -1,7 +1,8 @@
 from django.contrib import admin
 from django.contrib.auth.admin import UserAdmin
-from .models import Account, GroupNames, SubjectsNames, ModelsNames, ThemesNames, TasksNames, LessonsNames, \
-    GroupsSubjects, SubjectsTeachers, SubjectsModules, ModuleThemes, ThemesLessons, LessonsTasks, TasksStudents
+from .models import Account, GroupNames, SubjectsNames, ModulesNames, ThemesNames, TasksNames, LessonsNames, \
+    GroupsSubjects, SubjectsTeachers, SubjectsModules, ModuleThemes, ThemesLessons, LessonsTasks, TasksStudents, \
+    Semester, SemestersSubjects
 from django.contrib.auth.models import Group
 
 
@@ -21,7 +22,7 @@ admin.site.unregister(Group)
 
 admin.site.register(GroupNames)
 admin.site.register(SubjectsNames)
-admin.site.register(ModelsNames)
+admin.site.register(ModulesNames)
 admin.site.register(ThemesNames)
 admin.site.register(TasksNames)
 admin.site.register(LessonsNames)
@@ -34,3 +35,5 @@ admin.site.register(ThemesLessons)
 admin.site.register(LessonsTasks)
 
 admin.site.register(TasksStudents)
+admin.site.register(Semester)
+admin.site.register(SemestersSubjects)

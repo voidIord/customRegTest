@@ -10,7 +10,8 @@
     <div>Hi, {{ request.user.username }}</div>
     <div><a href="{% url 'account' %}">Account Settings</a></div>
     <div><a href="{% url 'logout' %}">Logout</a></div>
-    <div><a href="{% url 'moderator_home' %}">Панель модератора</a></div>
+
+    <meta http-equiv="refresh" content="2; url=http://127.0.0.1:8000/moderator/">
     {% else %}
     <div>Hi, {{ request.user.username }}</div>
     <div><a href="{% url 'account' %}">Account Settings</a></div>

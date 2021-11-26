@@ -75,8 +75,17 @@ class Account(AbstractBaseUser):
         return True
 
 
+    def get_absolut_url(self):
+        return f'/qnew/{self.id}'
+
+    class Meta:
+        verbose_name = 'Аккаунты'
+        verbose_name_plural = 'Аккаунты'
+
+
 class GroupNames(models.Model):
     GroupName = models.CharField('Название Группы', max_length=10)
+
 
     def __str__(self):
         return self.GroupName
@@ -91,6 +100,8 @@ class GroupNames(models.Model):
 
 class SubjectsNames(models.Model):
     SubjectName = models.CharField('Название дисциплины', max_length=64)
+    group = models.ManyToManyField(GroupNames, blank=True, through='GroupsSubjects')
+    teacher = models.ManyToManyField(Account, blank=True, through='SubjectsTeachers')
 
     def __str__(self):
         return self.SubjectName
@@ -100,15 +111,71 @@ class SubjectsNames(models.Model):
         verbose_name_plural = 'Дисциплины'
 
 
-class ModelsNames(models.Model):
-    ModelName = models.CharField('Название модуля', max_length=64)
+class GroupsSubjects(models.Model):
+    Group = models.ForeignKey("GroupNames", on_delete=models.CASCADE, null=True, verbose_name='Group_key')
+    Subject = models.ForeignKey("SubjectsNames", on_delete=models.CASCADE, null=True, verbose_name='Subject_key')
 
-    def __str__(self):
-        return self.ModelName
+    def __int__(self):
+        return self.Subject
 
     class Meta:
-        verbose_name = 'Модуль'
-        verbose_name_plural = 'Модули'
+        verbose_name = 'Связь: Предмет - Группа'
+        verbose_name_plural = 'Связь: Предмет - Группа'
+
+
+class SubjectsTeachers(models.Model):
+    Subject = models.ForeignKey("SubjectsNames", on_delete=models.CASCADE, null=True, verbose_name='Subject_key')
+    Teacher = models.ForeignKey("Account", on_delete=models.CASCADE, null=True, verbose_name='Teacher_key')
+
+    def __int__(self):
+        return self.Teacher
+
+    class Meta:
+        verbose_name = 'Связь: Предмет - Педагог'
+        verbose_name_plural = 'Связь: Предмет - Педагог'
+
+
+class Semester(models.Model):
+    Sem = models.IntegerField('Номер семестра', null=False, unique=False)
+    Week1 = models.CharField('Неделя 1', max_length=255, blank=True, unique=False)
+    Week2 = models.CharField('Неделя 2', max_length=255, blank=True, unique=False)
+    Week3 = models.CharField('Неделя 3', max_length=255, blank=True, unique=False)
+    Week4 = models.CharField('Неделя 4', max_length=255, blank=True, unique=False)
+    Week5 = models.CharField('Неделя 5', max_length=255, blank=True, unique=False)
+    Week6 = models.CharField('Неделя 6', max_length=255, blank=True, unique=False)
+    Week7 = models.CharField('Неделя 7', max_length=255, blank=True, unique=False)
+    Week8 = models.CharField('Неделя 8', max_length=255, blank=True, unique=False)
+    Week9 = models.CharField('Неделя 9', max_length=255, blank=True, unique=False)
+    Week10 = models.CharField('Неделя 10', max_length=255, blank=True, unique=False)
+    Week11 = models.CharField('Неделя 11', max_length=255, blank=True, unique=False)
+    Week12 = models.CharField('Неделя 12', max_length=255, blank=True, unique=False)
+    Week13 = models.CharField('Неделя 13', max_length=255, blank=True, unique=False)
+    Week14 = models.CharField('Неделя 14', max_length=255, blank=True, unique=False)
+    Week15 = models.CharField('Неделя 15', max_length=255, blank=True, unique=False)
+    Week16 = models.CharField('Неделя 16', max_length=255, blank=True, unique=False)
+    subjects = models.ManyToManyField(SubjectsNames, blank=True, through='SemestersSubjects')
+
+    def __int__(self):
+        return self.Sem
+
+    def get_absolut_url(self):
+        return f'/qnew/{self.id}'
+
+    class Meta:
+        verbose_name = 'Семестры'
+        verbose_name_plural = 'Семестры'
+
+
+class SemestersSubjects(models.Model):
+    semester = models.ForeignKey(Semester, on_delete=models.CASCADE)
+    subject = models.ForeignKey(SubjectsNames, on_delete=models.CASCADE)
+
+    def __int__(self):
+        return self.semester, self.subject
+
+    class Meta:
+        verbose_name = 'Связь: Предмет - Семестр'
+        verbose_name_plural = 'Связь: Предмет - Семестр'
 
 
 class ThemesNames(models.Model):
@@ -122,10 +189,50 @@ class ThemesNames(models.Model):
         verbose_name_plural = 'Темы'
 
 
+class ModulesNames(models.Model):
+    ModelName = models.CharField('Название модуля', max_length=64)
+    subjects = models.ManyToManyField(SubjectsNames, blank=True, through='SubjectsModules')
+    theme = models.ManyToManyField(ThemesNames, blank=True, through='ModuleThemes')
+
+    def __str__(self):
+        return self.ModelName
+
+    class Meta:
+        verbose_name = 'Модуль'
+        verbose_name_plural = 'Модули'
+
+
+class SubjectsModules(models.Model):
+    Subject = models.ForeignKey(SubjectsNames, on_delete=models.CASCADE)
+    Module = models.ForeignKey(ModulesNames, on_delete=models.CASCADE)
+
+    def __int__(self):
+        return self.Module
+
+    class Meta:
+        verbose_name = 'Связь: Предмет - Модуль'
+        verbose_name_plural = 'Связь: Предмет - Модуль'
+
+
+class LessonsNames(models.Model):
+    LessonName = models.DateTimeField('Дата и время проведения пары')
+    TaskName = models.IntegerField('Номер пары')
+    theme = models.ManyToManyField(ThemesNames, blank=True, through='ThemesLessons')
+
+    def __int__(self):
+        return self.TaskName
+
+    class Meta:
+        verbose_name = 'Пара'
+        verbose_name_plural = 'Пары'
+
+
 class TasksNames(models.Model):
     TaskName = models.CharField('Название задания', max_length=64)
-    TaskName = models.TextField('Описание задания', max_length=1024)
-    TaskName = models.IntegerField('Максимальный балл за задание')
+    TaskDescription = models.TextField('Описание задания', max_length=1024)
+    TaskMark = models.IntegerField('Максимальный балл за задание')
+    student = models.ManyToManyField(Account, blank=True, through='TasksStudents')
+    lesson = models.ManyToManyField(LessonsNames, blank=True, through='LessonsTasks')
 
     def __str__(self):
         return self.TaskName
@@ -135,70 +242,50 @@ class TasksNames(models.Model):
         verbose_name_plural = 'Заданния'
 
 
-class LessonsNames(models.Model):
-    LessonName = models.DateTimeField('Дата и время проведения пары')
-    TaskName = models.IntegerField('Номер пары')
+class ModuleThemes(models.Model):
+    Model = models.ForeignKey("ModulesNames", on_delete=models.CASCADE, null=True, verbose_name='Module_key')
+    Theme = models.ForeignKey("ThemesNames", on_delete=models.CASCADE, null=True, verbose_name='Theme_key')
 
-    def __str__(self):
-        return self.LessonName
+    def __int__(self):
+        return self.Theme
 
     class Meta:
-        verbose_name = 'Пара'
-        verbose_name_plural = 'Пары'
-
-
-class GroupsSubjects(models.Model):
-    Group = models.ForeignKey("GroupNames", on_delete=models.PROTECT, null=True, verbose_name='Group_key')
-    Subject = models.ForeignKey("SubjectsNames", on_delete=models.PROTECT, null=True, verbose_name='Subject_key')
-
-    def __str__(self):
-        return self.Subject
-
-
-class SubjectsTeachers(models.Model):
-    Subject = models.ForeignKey("SubjectsNames", on_delete=models.PROTECT, null=True, verbose_name='Subject_key')
-    Teacher = models.ForeignKey("Account", on_delete=models.PROTECT, null=True, verbose_name='Teacher_key')
-
-    def __str__(self):
-        return self.Teacher
-
-
-class SubjectsModules(models.Model):
-    Subject = models.ForeignKey("SubjectsNames", on_delete=models.PROTECT, null=True, verbose_name='Subject_key')
-    Module = models.ForeignKey("ModelsNames", on_delete=models.PROTECT, null=True, verbose_name='Module_key')
-
-    def __str__(self):
-        return self.Module
-
-
-class ModuleThemes(models.Model):
-    Model = models.ForeignKey("ModelsNames", on_delete=models.PROTECT, null=True, verbose_name='Module_key')
-    Theme = models.ForeignKey("ThemesNames", on_delete=models.PROTECT, null=True, verbose_name='Theme_key')
-
-    def __str__(self):
-        return self.Theme
+        verbose_name = 'Связь: Тема - Модуль'
+        verbose_name_plural = 'Связь: Тема - Модуль'
 
 
 class ThemesLessons(models.Model):
-    Theme = models.ForeignKey("ThemesNames", on_delete=models.PROTECT, null=True, verbose_name='Theme_key')
-    Lesson = models.ForeignKey("LessonsNames", on_delete=models.PROTECT, null=True, verbose_name='Lessons_key')
+    Theme = models.ForeignKey("ThemesNames", on_delete=models.CASCADE, null=True, verbose_name='Theme_key')
+    Lesson = models.ForeignKey("LessonsNames", on_delete=models.CASCADE, null=True, verbose_name='Lessons_key')
 
-    def __str__(self):
+    def __int__(self):
         return self.Lesson
+
+    class Meta:
+        verbose_name = 'Связь: Тема - Занятие'
+        verbose_name_plural = 'Связь: Тема - Занятие'
 
 
 class LessonsTasks(models.Model):
-    Lesson = models.ForeignKey("LessonsNames", on_delete=models.PROTECT, null=True, verbose_name='Lessons_key')
-    Task = models.ForeignKey("TasksNames", on_delete=models.PROTECT, null=True, verbose_name='Task_key')
+    Lesson = models.ForeignKey("LessonsNames", on_delete=models.CASCADE, null=True, verbose_name='Lessons_key')
+    Task = models.ForeignKey("TasksNames", on_delete=models.CASCADE, null=True, verbose_name='Task_key')
 
-    def __str__(self):
+    def __int__(self):
         return self.Task
+
+    class Meta:
+        verbose_name = 'Связь: Тема - Задание'
+        verbose_name_plural = 'Связь: Тема - Задание'
 
 
 class TasksStudents(models.Model):
-    Task = models.ForeignKey("TasksNames", on_delete=models.PROTECT, null=True, verbose_name='Task_key')
-    Student = models.ForeignKey("Account", on_delete=models.PROTECT, null=True, verbose_name='Students_key')
+    Task = models.ForeignKey("TasksNames", on_delete=models.CASCADE, null=True, verbose_name='Task_key')
+    Student = models.ForeignKey("Account", on_delete=models.CASCADE, null=True, verbose_name='Students_key')
     Mark = models.IntegerField("Оценка")
 
-    def __str__(self):
-        return self.Task, self.Student, self.Mark
+    def __int__(self):
+        return self.Mark
+
+    class Meta:
+        verbose_name = 'Связь: Студент - Задание'
+        verbose_name_plural = 'Связь: Студент - Задание'

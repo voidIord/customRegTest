@@ -1,16 +1,11 @@
-# This is a sample Python script.
+import requests
+from bs4 import BeautifulSoup
 
-# Press Shift+F10 to execute it or replace it with your code.
-# Press Double Shift to search everywhere for classes, files, tool windows, actions, and settings.
+url = 'https://www.omgtu.ru/educational_activities/areas-of-training-implemented-in-omsk-university-in-accordance-with-gef-in/bachelor/'
+response = requests.get(url)
+soup = BeautifulSoup(response.text, 'lxml')
 
-
-def print_hi(name):
-    # Use a breakpoint in the code line below to debug your script.
-    print(f'Hi, {name}')  # Press Ctrl+F8 to toggle the breakpoint.
-
-
-# Press the green button in the gutter to run the script.
-if __name__ == '__main__':
-    print_hi('PyCharm')
-
-# See PyCharm help at https://www.jetbrains.com/help/pycharm/
+internalLinks = [
+    a.get('href') for a in soup.find_all('a')
+    if a.get('href') and a.get('href').startswith('/')]
+print(internalLinks)
