@@ -1,6 +1,9 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm
+from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm, SubjectsNamesForm, \
+    GroupsSubjectsForm, SubjectsTeachersForm, SemestersSubjectsForm, ThemesNamesForm, ModulesNamesForm, \
+    SubjectsModulesForm, LessonsNamesForm, TasksNamesForm, ModuleThemesForm, ThemesLessonsForm, LessonsTasksForm, \
+    TasksStudentsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
 from .models import GroupNames, Semester
 from .forms import GroupForm, TableUpdateForm
@@ -167,5 +170,213 @@ def table_view(request):
     return render(request, 'account/table.html', qdata)
 
 
+def subjects_names_view(request):
+    if request.method == 'POST':
+        form = SubjectsNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = SubjectsNamesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/subject-name.html', data)
 
 
+def groups_subjects_view(request):
+    if request.method == 'POST':
+        form = GroupsSubjectsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = GroupsSubjectsForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/groups-subjects.html', data)
+
+
+def subjects_teachers_view(request):
+    if request.method == 'POST':
+        form = SubjectsTeachersForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = SubjectsTeachersForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/subjects-teachers.html', data)
+
+
+def semesters_subjects_view(request):
+    if request.method == 'POST':
+        form = SemestersSubjectsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = SemestersSubjectsForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/semesters-subjects.html', data)
+
+
+def themes_names_view(request):
+    if request.method == 'POST':
+        form = ThemesNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = ThemesNamesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/themes-names.html', data)
+
+
+def modules_names_view(request):
+    if request.method == 'POST':
+        form = ModulesNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = ModulesNamesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/modules-names.html', data)
+
+
+def subjects_modules_view(request):
+    if request.method == 'POST':
+        form = SubjectsModulesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = SubjectsModulesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/subjects-modules.html', data)
+
+
+def lessons_names_view(request):
+    if request.method == 'POST':
+        form = LessonsNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = LessonsNamesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/lessons-names.html', data)
+
+
+def tasks_names_view(request):
+    if request.method == 'POST':
+        form = TasksNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = TasksNamesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/tasks-names.html', data)
+
+
+def modules_themes_view(request):
+    if request.method == 'POST':
+        form = ModuleThemesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = ModuleThemesForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/modules-themes.html', data)
+
+
+def themes_lessons_view(request):
+    if request.method == 'POST':
+        form = ThemesLessonsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = ThemesLessonsForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/themes-lessons.html', data)
+
+
+def lessons_tasks_view(request):
+    if request.method == 'POST':
+        form = LessonsTasksForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = LessonsTasksForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/lessons-tasks.html', data)
+
+
+def tasks_students_view(request):
+    if request.method == 'POST':
+        form = TasksStudentsForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('/account')
+
+    form = TasksStudentsForm()
+
+    data = {
+        'form': form,
+    }
+
+    return render(request, 'account/tasks-students.html', data)
+
+
+def navigate(request):
+    return render(request, 'account/navigation.html')

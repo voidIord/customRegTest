@@ -1,0 +1,74 @@
+body{
+    background: #000000;
+    color: #ff0000;
+}
+aside{
+    float: left;
+    background: #1c1c1c;
+    width: 16%;
+    height: 100vh;
+    color: #cdcdcd;
+    border-right: 3px solid #4c4b4b;
+}
+
+aside img{
+    width: 200px;
+    float: left;
+}
+aside span{
+    margin-left: 58px;
+    margin-top: 15px;
+    color: #ffdd00;
+}
+
+aside h3{
+    margin-top: 20px;
+    margin-left: 20px;
+}
+aside ul {list-style: none}
+aside ul li{
+    color: lightskyblue;
+    display: block;
+    margin-top: 12px;
+    transition: transform .4000ms ease;
+}
+
+aside ul li:hover, aside ul a:hover{
+    color: #ffef89;
+    text-decoration: none;
+    transform: scale(1.03);
+}
+
+main .features{
+    float: left;
+    margin-top: 100px;
+    text-align: center;
+    width: 75%;
+    color: #ff2118;
+
+}
+main .features h1{font-size: 40px}
+main .features h1{max-width: 900px; margin: 20px auto}
+main .features p{color: #fffb53; font-size: 16px}
+
+.alert{
+    float: left;
+    clear: both;
+    width: 400px;
+    margin: 20px 34%;
+    text-align: left;
+    background: #006D4F;
+}
+.alert h3{
+    color: #A67F00;
+}
+
+#dates{font-size: 12px; color: #6DDCBD}
+
+#formid{margin-top: -70px; text-align: center;}
+
+form{
+    margin-left: 32%;
+    width: 500px;
+    margin-top: 50px;
+}
