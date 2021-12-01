@@ -5,7 +5,7 @@ from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateFor
     SubjectsModulesForm, LessonsNamesForm, TasksNamesForm, ModuleThemesForm, ThemesLessonsForm, LessonsTasksForm, \
     TasksStudentsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
-from .models import GroupNames, Semester
+from .models import GroupNames
 from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
 from .models import Account
@@ -152,6 +152,12 @@ def group(request):
     }
 
     return render(request, 'account/group.html', gdata)
+
+
+def group_member(request):
+    gm = Account.objects.order_by('-email')
+    print(gm)
+    return render(request, 'account/din.html', {'gm': gm})
 
 
 def table_view(request):
