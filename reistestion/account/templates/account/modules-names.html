@@ -1,0 +1,12 @@
+{% block title %}Форма для модулей{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для добавления названий модулей</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.ModelName }}<br>
+            <button type="submit" class="btn btn-success">Добавить группу</button>
+        </form>
+    </div>
+{% endblock %}

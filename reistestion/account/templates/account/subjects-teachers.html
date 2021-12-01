@@ -1,0 +1,13 @@
+{% block title %}Форма для предмет-учитель{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для добавления предмет-учитель</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.Subject }}<br>
+            {{ form.Teacher }}<br>
+            <button type="submit" class="btn btn-success">Добавить группу</button>
+        </form>
+    </div>
+{% endblock %}

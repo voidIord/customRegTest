@@ -1,0 +1,14 @@
+{% block title %}Форма для студент-задание{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для добавления студент-задание</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.Task }}<br>
+            {{ form.Student }}<br>
+            {{ form.Mark }}<br>
+            <button type="submit" class="btn btn-success">Добавить студена-задание</button>
+        </form>
+    </div>
+{% endblock %}

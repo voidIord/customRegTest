@@ -1,0 +1,12 @@
+{% block title %}Форма для тем{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для добавления тем</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ form.ThemeName }}<br>
+            <button type="submit" class="btn btn-success">Добавить тему</button>
+        </form>
+    </div>
+{% endblock %}

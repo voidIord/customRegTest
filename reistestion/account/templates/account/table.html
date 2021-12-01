@@ -1,0 +1,29 @@
+{% block title %}Форма для создания таблиц{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>для добавления таблицы</h1>
+        <form method="post">
+            {% csrf_token %}
+            {{ qform.Sem}}<br>
+            {{ qform.Week1}}<br>
+            {{ qform.Week2}}<br>
+            {{ qform.Week3}}<br>
+            {{ qform.Week4}}<br>
+            {{ qform.Week5}}<br>
+            {{ qform.Week6}}<br>
+            {{ qform.Week7}}<br>
+            {{ qform.Week8}}<br>
+            {{ qform.Week9}}<br>
+            {{ qform.Week10}}<br>
+            {{ qform.Week11}}<br>
+            {{ qform.Week12}}<br>
+            {{ qform.Week13}}<br>
+            {{ qform.Week14}}<br>
+            {{ qform.Week15}}<br>
+            {{ qform.Week16}}<br>
+
+            <button type="submit" class="btn btn-success">Добавить таблицу</button>
+        </form>
+    </div>
+{% endblock %}
