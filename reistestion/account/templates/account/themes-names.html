@@ -1,12 +1,22 @@
-{% block title %}Форма для тем{% endblock %}
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Темы</title>
+    <link rel="stylesheet" href="{% static '/account/table.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+</head>
+<body>
 
-{% block content %}
-    <div class = "features">
-        <h1>для добавления тем</h1>
+    <div class = "signin">
+        <h1>Для добавления тем</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.ThemeName }}<br>
-            <button type="submit" class="btn btn-success">Добавить тему</button>
+            <button type="submit" class="button buttonBlue">Добавить тему</button>
         </form>
     </div>
-{% endblock %}
+</body>
+</html>

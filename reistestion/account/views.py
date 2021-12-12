@@ -5,10 +5,9 @@ from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateFor
     SubjectsModulesForm, LessonsNamesForm, TasksNamesForm, ModuleThemesForm, ThemesLessonsForm, LessonsTasksForm, \
     TasksStudentsForm
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
-from .models import GroupNames
 from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
-from .models import Account
+from .models import Account, GroupNames
 
 
 def registration_view(request):
@@ -124,6 +123,10 @@ class dinamic(DetailView):
     template_name = 'account/din.html'
     context_object_name = 'arti'
 
+    @staticmethod
+    def group_member():
+        return Account.objects.filter(group=2)
+
 
 class update(UpdateView):
     model = GroupNames
@@ -152,12 +155,6 @@ def group(request):
     }
 
     return render(request, 'account/group.html', gdata)
-
-
-def group_member(request):
-    gm = Account.objects.order_by('-email')
-    print(gm)
-    return render(request, 'account/din.html', {'gm': gm})
 
 
 def table_view(request):

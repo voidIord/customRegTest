@@ -1,14 +1,23 @@
-{% block title %}Форма для заданий{% endblock %}
-
-{% block content %}
-    <div class = "features">
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Задания</title>
+    <link rel="stylesheet" href="{% static '/account/table.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+</head>
+<body>
+    <div class = "signin">
         <h1>для добавления заданий</h1>
         <form method="post">
             {% csrf_token %}
             {{ form.TaskName }}<br>
             {{ form.TaskDescription }}<br>
             {{ form.TaskMark }}<br>
-            <button type="submit" class="btn btn-success">Добавить задание</button>
+            <button type="submit" class="button buttonBlue">Добавить задание</button>
         </form>
     </div>
-{% endblock %}
+</body>
+</html>

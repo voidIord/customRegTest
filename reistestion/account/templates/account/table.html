@@ -1,29 +1,45 @@
-{% block title %}Форма для создания таблиц{% endblock %}
 
-{% block content %}
-    <div class = "features">
-        <h1>для добавления таблицы</h1>
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+</head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Семестры</title>
+    <link rel="stylesheet" href="{% static '/account/table.css' %}">
+    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
+</head>
+<body>
+
+    <div class="signin">
+
+        <h1>Форма для создания таблиц</h1>
         <form method="post">
             {% csrf_token %}
             {{ qform.Sem}}<br>
-            {{ qform.Week1}}<br>
-            {{ qform.Week2}}<br>
-            {{ qform.Week3}}<br>
-            {{ qform.Week4}}<br>
-            {{ qform.Week5}}<br>
-            {{ qform.Week6}}<br>
-            {{ qform.Week7}}<br>
-            {{ qform.Week8}}<br>
-            {{ qform.Week9}}<br>
-            {{ qform.Week10}}<br>
-            {{ qform.Week11}}<br>
-            {{ qform.Week12}}<br>
-            {{ qform.Week13}}<br>
-            {{ qform.Week14}}<br>
-            {{ qform.Week15}}<br>
-            {{ qform.Week16}}<br>
+            {{ qform.Week1_1}}<br>
+            {{ qform.Week2_1}}<br>
+            {{ qform.Week3_1}}<br>
+            {{ qform.Week4_1}}<br>
+            {{ qform.Week5_1}}<br>
+            {{ qform.Week6_1}}<br>
+            {{ qform.Week7_1}}<br>
+            {{ qform.Week8_1}}<br>
+            {{ qform.Week9_1}}<br>
+            {{ qform.Week10_1}}<br>
+            {{ qform.Week11_1}}<br>
+            {{ qform.Week12_1}}<br>
+            {{ qform.Week13_1}}<br>
+            {{ qform.Week14_1}}<br>
+            {{ qform.Week15_1}}<br>
+            {{ qform.Week16_1}}<br>
+            {{ qform.Week17_1}}<br>
+            {{ qform.Week18_1}}<br>
 
-            <button type="submit" class="btn btn-success">Добавить таблицу</button>
+            <button type="submit" class="button buttonBlue">Добавить таблицу</button>
         </form>
+
     </div>
-{% endblock %}
+
+</body>
+</html>
