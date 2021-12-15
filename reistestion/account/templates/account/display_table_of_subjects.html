@@ -1,0 +1,21 @@
+{% extends 'moderator/layout.html' %}
+
+{% block title %}Графики дисциплин{% endblock %}
+
+{% block content %}
+    <div class = "features">
+        <h1>Графики дисциплин</h1>
+        {% if sem %}
+            {% for el in sem %}
+            <div class = "alert">
+                <h3>{{ el.Sem }}</h3>
+                <a href="{% url 'display-one-table' el.id %}"><button class="but-bacg">Просмотреть график дисциплины</button></a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет записей</p>
+        {% endif %}
+        {# comments #}
+        <a href="{% url 'TableForSemester' %}"><li><button class="btn btn-info">Добавить график дисциплины</button></li></a>
+    </div>
+{% endblock %}

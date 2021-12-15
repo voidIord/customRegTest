@@ -6,10 +6,10 @@
 {% block content %}
     <div class = "features">
         <h1>{{arti.GroupName}}</h1>
-        {% if gm %}
-            {% for el in gm %}
+        {% if gn %}
+            {% for el in gn %}
             <div class = "alert">
-                <h3>{{ el.username }}</h3>
+                <h3>{{ el.first_name }}</h3>
             </div>
             {% endfor %}
         {% else %}

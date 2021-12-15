@@ -8,6 +8,11 @@ urlpatterns = [
     path('<int:pk>/update', views.update.as_view(), name='group-update'),
     path('<int:pk>/delete', views.delete.as_view(), name='group-delete'),
 
+
+    path('display_table', views.displaing_table_of_subjects, name='display-table'),
+    path('<int:pk>/display_one_table', views.displaing_table.as_view(), name='display-one-table'),
+
+
     path('register/', views.registration_view, name='register'),
     path('image/', views.image_view, name='image'),
     path('login/', views.login_view, name='login'),
@@ -15,6 +20,7 @@ urlpatterns = [
     path('logout/', views.logout_view, name='logout'),
     path('account/', views.account_view, name='account'),
     path('table/', views.table_view, name='TableForSemester'),
+    path('table_of_subject/', views.displaing_table_of_subjects, name='TableForSubjects'),
 
     path('subjects/', views.subjects_names_view, name='TableForSubjects'),
     path('subjects-groups/', views.groups_subjects_view, name='TableForSubjectsNames'),

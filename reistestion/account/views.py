@@ -3,7 +3,7 @@ from django.contrib.auth import login, authenticate, logout
 from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm, SubjectsNamesForm, \
     GroupsSubjectsForm, SubjectsTeachersForm, SemestersSubjectsForm, ThemesNamesForm, ModulesNamesForm, \
     SubjectsModulesForm, LessonsNamesForm, TasksNamesForm, ModuleThemesForm, ThemesLessonsForm, LessonsTasksForm, \
-    TasksStudentsForm
+        TasksStudentsForm, Semester
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
 from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
@@ -123,9 +123,21 @@ class dinamic(DetailView):
     template_name = 'account/din.html'
     context_object_name = 'arti'
 
-    @staticmethod
-    def group_member():
-        return Account.objects.filter(group=2)
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['gn'] = Account.objects.filter(group =2)
+        return context
+
+
+def displaing_table_of_subjects(request):
+    sem = Semester.objects.order_by('Sem')
+    return render(request, 'account/display_table_of_subjects.html', {'sem': sem})
+
+
+class displaing_table(DetailView):
+    model = Semester
+    template_name = 'account/disblay_table.html'
+    context_object_name = 'display'
 
 
 class update(UpdateView):
