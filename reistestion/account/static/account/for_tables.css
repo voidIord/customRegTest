@@ -1,3 +1,5 @@
+
+
 /*Fonts*/
 @import url('https://fonts.googleapis.com/css2?family=Raleway:wght@700&display=swap');
 /*------*/
@@ -11,11 +13,11 @@
 }
 
 html{
-    overflow: hidden;
+    overflow: auto;
 }
 
 body{
-    padding: 1rem;
+    padding: 10rem;
     text-align: center;
     /* background-image: url("images/bg.png"); */
     background-repeat: no-repeat;
@@ -26,8 +28,8 @@ body{
 }
 
 a{
-    color: rgb(37, 37, 236);
-    font-size: 14px;
+    text-decoration: none;
+    list-style-type: none;
 }
 
 h1{
@@ -41,17 +43,6 @@ h2{
     font-family: 'Roboto', sans-serif;
 }
 
-.signin 		{
-    background: linear-gradient(to top,#004e88, #48addc);
-    border-radius: 20px;
-    font-family:'Roboto';
-    width: 45%;
-    opacity: 95%;
-    margin:0px auto 0;
-    display:block;
-    padding:30px 70px 30px;
-  }
-
 
   form{
     margin-top: 10px;
@@ -59,13 +50,13 @@ h2{
 
 /* form starting stylings ------------------------------- */
 
-hgroup { 
+hgroup {
 	text-align:center;
 	margin-top: 4em;
 }
 
-.group { 
-	position: relative; 
+.group {
+	position: relative;
 	margin-bottom: 45px;
 }
 
@@ -75,6 +66,21 @@ hgroup {
   width: 30px;
   right: 10px;
   top: 10px;
+}
+
+.alert{
+    background: linear-gradient(to top,#004e88, #48addc);
+    border-radius: 20px;
+    font-family:'Roboto';
+    width: 35%;
+    opacity: 95%;
+    margin:30px auto 0;
+    display:block;
+    padding:30px 70px 30px;
+}
+.alert h3{
+    color: #ffffff;
+    font-family: 'Roboto' , sans-serif;
 }
 
 .group img.loaded{
@@ -89,7 +95,7 @@ hgroup {
 }
 
 
-input[type="text"],input[type="password"] {
+input[type="text"],input[type="password"],input[type="number"] {
 	font-size: 18px;
 	padding: 10px 10px 10px 5px;
 	/* -webkit-appearance: none; */
@@ -98,7 +104,7 @@ input[type="text"],input[type="password"] {
 	color: #636363;
 	width: 100%;
 	border: none;
-	border-radius: 0;
+	border-radius: 8px;
 	border-bottom: 1px solid #757575;
 }
 
@@ -139,7 +145,7 @@ input:focus ~ label.anim-label, input.used ~ label.anim-label {
 
 .bar:before, .bar:after {
 	content: '';
-	height: 2px; 
+	height: 2px;
 	width: 0;
 	bottom: 0px;
 	position: absolute;
@@ -162,7 +168,7 @@ input:focus ~ .bar:before, input:focus ~ .bar:after { width: 50%; }
 .highlight {
 	position: absolute;
 	height: 60%;
-	width: 100px; 
+	width: 100px;
 	top: 25%;
 	left: 0;
 	pointer-events: none;
@@ -187,12 +193,12 @@ input:focus ~ .highlight {
 
 /* Button */
 
-.button {
+.but-bacg {
   position: relative;
   display: inline-block;
   padding: 12px 24px;
-  margin: .3em 0 1em 0;
-  width: 40%;
+  margin: .10em 0 0em 0;
+  width: 75%;
   vertical-align: middle;
   color: #fffdfc;
   font-family: 'Roboto',sans-serif;
@@ -205,19 +211,18 @@ input:focus ~ .highlight {
   border: 0;
   cursor: pointer;
   transition: all 0.15s ease;
+  background: #fcb241;
+    text-shadow: 1px 1px 2px black;
+    border-radius: 8px;
 }
+
+.but-bacg:hover { background: #f8a015; }
 
 .button:focus { outline: 0; }
 
 
 /* Button modifiers */
 
-.buttonBlue {
-
-  background: #fcb241;
-    text-shadow: 1px 1px 2px black;
-    border-radius: 8px;
-}
 
 .buttonSec {
   border: 3px solid #fcb241;
@@ -306,7 +311,7 @@ input:focus ~ .highlight {
 
 #signup .error p{
   position: absolute;
-  
+
 }
 
 #signup i{
@@ -336,7 +341,7 @@ input:focus ~ .highlight {
         transform: translateY(-50%);
         left: 0;
     }
-    .signin #signup{ 
+    .signin #signup{
       position: absolute;
       width: 100%;
       top: 0 !important;
@@ -436,3 +441,32 @@ label.gender-label::before {
   top: unset;
     color: #ffffff;
 }
+
+.btn {
+  position: relative;
+  display: inline-block;
+  padding: 10px 24px;
+  margin: .3em 0 1em 0;
+  width: 20%;
+  vertical-align: middle;
+  color: #fffdfc;
+  font-family: 'Roboto',sans-serif;
+  font-size: 16px;
+  line-height: 20px;
+  -webkit-font-smoothing: antialiased;
+  text-align: center;
+  letter-spacing: 1px;
+  background: transparent;
+  border: 0;
+  cursor: pointer;
+  transition: all 0.15s ease;
+}
+
+.btn-info {
+
+  background: #cc6600;
+    text-shadow: 1px 1px 2px black;
+    border-radius: 8px;
+}
+
+.btn-info:hover { background: #ff8c1a; }
