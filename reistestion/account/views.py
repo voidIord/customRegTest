@@ -128,6 +128,21 @@ class dinamic(DetailView):
         context['gn'] = Account.objects.get(pk=GroupNames.pk)
         return context
 
+    def table_view(request):
+        if request.method == 'POST':
+            qform = TableUpdateForm(request.POST)
+            if qform.is_valid():
+                qform.save()
+                return redirect('/account')
+
+        upform = TableUpdateForm()
+
+        updata = {
+            'upform': upform,
+        }
+
+        return render(request, 'account/din.html', updata)
+
 
 def displaing_table_of_subjects(request):
     sem = Semester.objects.order_by('Sem')
