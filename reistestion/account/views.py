@@ -110,7 +110,7 @@ def account_view(request):
             })
 
     context['account_form'] = form
-    return render(request, "account/account.html", context)
+    return render(request, "account/index.html", context)
 
 
 def interface(request):

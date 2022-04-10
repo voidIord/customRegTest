@@ -2,7 +2,7 @@ from django.urls import path
 from . import views
 
 urlpatterns = [
-    path('', views.interface, name='interface'),
+    path('', views.account_view, name='home'),
     path('group', views.group, name='group'),
     path('<int:pk>', views.dinamic.as_view(), name='group-detail'),
     path('<int:pk>/update', views.update.as_view(), name='group-update'),
@@ -16,11 +16,10 @@ urlpatterns = [
     path('register/', views.registration_view, name='register'),
     path('image/', views.image_view, name='image'),
     path('login/', views.login_view, name='login'),
-    path('accounts/login/', views.login_view, name='login'),
     path('logout/', views.logout_view, name='logout'),
-    path('account/', views.account_view, name='account'),
     path('table/', views.table_view, name='TableForSemester'),
     path('table_of_subject/', views.displaing_table_of_subjects, name='TableForSubjects'),
+    path('interface/', views.interface, name='interface'),
 
     path('subjects/', views.subjects_names_view, name='TableForSubjects'),
     path('subjects-groups/', views.groups_subjects_view, name='TableForSubjectsNames'),
