@@ -395,3 +395,9 @@ def tasks_students_view(request):
 
 def navigate(request):
     return render(request, 'account/navigation.html')
+
+def profile(request):
+    return render(request, 'account/account.html')
+    
+def password_change(request):
+    return render(request, 'registration/password_change.html')

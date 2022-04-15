@@ -1,0 +1,314 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+	<base href=".." />
+    <title>Список дисциплин</title>
+	<link href="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-1BmE4kWBq78iYhFldvKuhfTAU6auU8tT94WrHftjDbrCEXSU1oBoqyl2QvZ6jIW3" crossorigin="anonymous">
+	<script src="https://cdn.jsdelivr.net/npm/bootstrap@5.1.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-ka7Sk0Gln4gmtz2MlQnikT1wXgYsOg+OMhuP+IlRH9sENBO0LRn5q+8nbTov4+1p" crossorigin="anonymous"></script>
+	<script src="./js/jquery-3.6.0.min.js"></script>
+	<link rel="stylesheet" href="./css/style.css">
+</head>
+<body>
+	<header class="py-3 mb-4 border-bottom">
+		<div class="container d-flex">
+		<a href="index.html" class="d-flex align-items-center mb-md-0 me-auto px-2 text-decoration-none"><img src="./images/icon.png" alt="logo"></a>
+		<ul class="nav nav-pills">
+			<li class="nav-item d-none d-md-flex"><a href="index_authorized.html" class="nav-link">Главная</a></li>
+			<li class="nav-item d-none d-md-flex"><a href="disciplines.html" class="nav-link">Дисциплины</a></li>
+			<li class="nav-item d-none d-md-flex"><a href="management.html" class="nav-link">Конструктор</a></li>
+			<div id="navbarNavDarkDropdown">
+				<li class="nav-item dropdown d-none d-md-flex">
+				  <span class="nav-link dropdown-toggle" id="dropdownUser1" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					Иванов И.И.
+					<!-- <span class="position-absolute badge rounded-pill bg-danger">
+						1
+						<span class="visually-hidden">unread messages</span>
+					</span> -->
+				  </span>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownUser1">
+					<li><a class="dropdown-item" href="profile.html">Профиль</a></li>
+					<li><a class="dropdown-item" href="alerts.html">Уведомления</a></li>
+					<li><a class="dropdown-item" href="index.html">Выход</a></li>
+				  </ul>
+				</li>
+			</div>
+			<div id="navbarNavDarkDropdown">
+				<li class="nav-item dropdown d-md-none">
+				  <span class="nav-link" id="dropdownUser2" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+					&#9776;
+					<!-- <span class="position-absolute badge rounded-pill bg-danger">
+						1
+						<span class="visually-hidden">unread messages</span>
+					</span> -->
+				  </span>
+				  <ul class="dropdown-menu" aria-labelledby="dropdownUser2">
+					<li><a class="dropdown-item" href="index_authorized.html">Главная</a></li>
+					<li><a class="dropdown-item" href="disciplines.html">Дисциплины</a></li>
+					<li><a class="dropdown-item" href="management.html">Конструктор</a></li>
+					<hr class="mb-2 mt-2">
+					<li><a class="dropdown-item" href="profile.html">Профиль</a></li>
+					<li><a class="dropdown-item" href="alerts.html">Уведомления</a></li>
+					<li><a class="dropdown-item" href="index.html">Выход</a></li>
+				  </ul>
+				</li>
+			</div>
+<!-- 			<a class="btn btn-outline-primary mx-2" href="login.html" role="button">Вход</a>
+			<a class="btn btn-primary" href="login.html" role="button">Регистрация</a> -->
+			
+		</ul>
+	</div>
+	</header>
+	<main class="container">
+		<h1>Алгебра</h1>
+		<br>
+		<h3>Группа: МО-201</h3>
+		<div class="main_wrapper">
+			<div class="main_content">
+				<!-- <form class="row g-3 d-flex justify-content-end">
+					<div class="col-auto">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					</div>
+					<div class="col-auto mb-3">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</div>
+				  </form> -->
+				  <!-- <div class="accordion" id="accordionExample">
+					<div class="accordion-item">
+					  <h2 class="accordion-header" id="headingOne">
+						<button class="accordion-button" type="button" data-bs-toggle="collapse" data-bs-target="#collapseOne" aria-expanded="true" aria-controls="collapseOne">
+						  Раздел 1
+						</button>
+					  </h2>
+					  <div id="collapseOne" class="accordion-collapse collapse show" aria-labelledby="headingOne" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							<table class="table">
+								<thead>
+								  <tr>
+									<th scope="col">#</th>
+									<th scope="col">Тема</th>
+									<th scope="col">Дата/время занятия</th>
+									<th scope="col">Преподаватель</th>
+								  </tr>
+								</thead>
+								<tbody>
+								  <tr>
+									<th scope="row">1</th>
+									<td>Отношения и множества</td>
+									<td>1.9.2020, 15:00</td>
+									<td>Иванов И.И.</td>
+								  </tr>
+								  <tr>
+									<th scope="row">2</th>
+									<td>Пределы</td>
+									<td>1.10.2020, 15:00</td>
+									<td>Иванов И.И.</td>
+								  </tr>
+								  <tr>
+									<th scope="row">3</th>
+									<td>Производные от неск.переменных</td>
+									<td>1.12.2099, 23:45</td>
+									<td>Иванов И.И.</td>
+								  </tr>
+								  <tr>
+									<th scope="row">4</th>
+									<td class="table-warning" colspan="3" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">резерв</td>
+								  </tr>
+								  <tr>
+									<th scope="row">5</th>
+									<td class="table-active" colspan="3" data-bs-toggle="modal" data-bs-target="#addTheme" role="button">Добавить</td>
+								  </tr>
+								</tbody>
+							  </table>
+							<button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#addTheme">
+								<span><b>&plus;</b> Добавить тему</span>
+							</button>
+							<button type="button" class="btn btn-outline-danger mt-3" data-bs-toggle="modal" data-bs-target="#deleteModel">
+								<span><b>&minus;</b> Удалить дисциплину</span>
+							</button>
+						</div>
+					  </div>
+					</div>
+					<div class="accordion-item">
+					  <h2 class="accordion-header" id="headingTwo">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseTwo" aria-expanded="false" aria-controls="collapseTwo">
+						  Раздел 2
+						</button>
+					  </h2>
+					  <div id="collapseTwo" class="accordion-collapse collapse" aria-labelledby="headingTwo" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+							
+						</div>
+					  </div>
+					</div>
+					<div class="accordion-item">
+					  <h2 class="accordion-header" id="headingThree">
+						<button class="accordion-button collapsed" type="button" data-bs-toggle="collapse" data-bs-target="#collapseThree" aria-expanded="false" aria-controls="collapseThree">
+						  Раздел 3
+						</button>
+					  </h2>
+					  <div id="collapseThree" class="accordion-collapse collapse" aria-labelledby="headingThree" data-bs-parent="#accordionExample">
+						<div class="accordion-body">
+						  <strong>This is the third item's accordion body.</strong> It is hidden by default, until the collapse plugin adds the appropriate classes that we use to style each element. These classes control the overall appearance, as well as the showing and hiding via CSS transitions. You can modify any of this with custom CSS or overriding our default variables. It's also worth noting that just about any HTML can go within the <code>.accordion-body</code>, though the transition does limit overflow.
+						</div>
+					  </div>
+					</div>
+				  </div> -->
+				  <table class="table">
+					<thead>
+					  <tr>
+						<th scope="col">#</th>
+						<th scope="col">Тема</th>
+						<th scope="col">Дата/время занятия</th>
+						<th scope="col">Преподаватель</th>
+						<th scope="col"></th>
+					  </tr>
+					</thead>
+					<tbody>
+					  <tr>
+						<th scope="row">1</th>
+						<td>Отношения и множества</td>
+						<td>1.9.2020, 15:00</td>
+						<td>Иванов И.И.</td>
+						<td>&#128393;</td>
+					  </tr>
+					  <tr>
+						<th scope="row">2</th>
+						<td>Пределы</td>
+						<td>1.10.2020, 15:00</td>
+						<td>Иванов И.И.</td>
+						<td>&#128393;</td>
+					  </tr>
+					  <tr>
+						<th scope="row">3</th>
+						<td>Производные от неск.переменных</td>
+						<td>1.12.2099, 23:45</td>
+						<td>Иванов И.И.</td>
+						<td>&#128393;</td>
+					  </tr>
+					  <tr>
+						<th scope="row">4</th>
+						<td class="table-warning" colspan="4" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">резерв</td>
+					  </tr>
+					  <tr>
+						<th scope="row">5</th>
+						<td class="table-active" colspan="4" data-bs-toggle="modal" data-bs-target="#addTheme" role="button">Добавить</td>
+					  </tr>
+					</tbody>
+				  </table>
+				<div class="row mt-3">
+					<div class="col">
+						<button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addTheme">
+							<span><b>&plus;</b> Добавить тему</span>
+						</button>
+						<button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModel">
+							<span><b>&minus;</b> Удалить дисциплину</span>
+						</button>
+					</div>
+					<div class="col">
+						<button type="button" class="btn btn-outline-primary">
+							<span>Посмотреть список тем</span>
+						</button>
+						<button type="button" class="btn btn-outline-primary">
+							<span>Посмотреть рабочую программу</span>
+						</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</main>
+	
+	<!-- Modal: Перенести тему -->
+	<form method="get">
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Перенести тему</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<select class="form-select" name="subject_name" aria-label="Default select example">
+						<option selected>Выберите тему</option>
+						<option value="1">Отношения и множества</option>
+						<option value="2">Пределы</option>
+						<option value="3">Производные от неск.переменных</option>
+					</select>
+					<br>
+					<div class="row">
+						<div class="col">
+							<input type="date" class="form-control" name="subject_date">
+						</div>
+						<div class="col">
+							<input type="time" class="form-control" name="subject_time">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+				<button type="submit" class="btn btn-warning">Перенести</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
+
+	<!-- Modal: Добавить тему -->
+	<form method="get">
+		<div class="modal fade" id="addTheme" tabindex="-1" aria-labelledby="addThemeLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="addThemeLabel">Добавить тему</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<input class="form-control" name="subject_name" placeholder="Наименование темы">
+						<div class="row">
+							<div class="col">
+								<input type="date" class="form-control" name="subject_date">
+							</div>
+							<div class="col">
+								<input type="time" class="form-control" name="subject_time">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+					<button type="submit" class="btn btn-success">Добавить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<!-- Modal: Удалить дисциплину -->
+	<form method="get">
+		<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="deleteModelLabel">Удаление дисциплины</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<span>
+							Удалить дисциплину "Алгебра"?
+							<br>
+							Все данные будут безвозвратно утеряны.
+						</span>
+					</div>
+					<div class="modal-footer">
+					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+					<button type="submit" class="btn btn-danger">Удалить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+		</form>
+
+	<script src="./js/script.js"></script>
+</body>
+</html>

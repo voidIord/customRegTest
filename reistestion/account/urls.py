@@ -12,7 +12,7 @@ urlpatterns = [
     path('display_table', views.displaing_table_of_subjects, name='display-table'),
     path('<int:pk>/display_one_table', views.displaing_table.as_view(), name='display-one-table'),
 
-
+    path('account/', views.profile, name='profile'),
     path('register/', views.registration_view, name='register'),
     path('image/', views.image_view, name='image'),
     path('login/', views.login_view, name='login'),
@@ -35,4 +35,5 @@ urlpatterns = [
     path('lessons-tasks/', views.lessons_tasks_view, name='TableForLessonsTasks'),
     path('tasks-students/', views.tasks_students_view, name='TableForTasksStudents'),
     path('navigation/', views.navigate, name='NavigateForTables'),
+    path('changepass/', views.password_change, name='changepwd')
 ]
