@@ -11,29 +11,39 @@ from .models import Account, GroupNames
 
 
 def registration_view(request):
-    context = {}
-    if request.method == 'GET':
-        form = RegistrationForm()
-        context['registration_form'] = form
-        return render(request, 'account/register.html', context)
-    else:
-        if request.POST['password1'] == request.POST['password2']:
-            phn = request.POST['phone_no'].replace(" ", "")
-            try:
-                user = Account.objects.create_user(request.POST['email'],
-                                                   password=request.POST['password1'],
-                                                   username=request.POST['username'],
-                                                   gender=request.POST['gender'],
-                                                   phone_no=phn,
-                                                   prof_img=None,)
-                user.save()
-                login(request, user)
-                return redirect('image')
-            except IntegrityError:
-                return render(request, 'account/register.html', {'form': RegistrationForm()})
+    if request.method == 'POST':
+        form = RegistrationForm(request.POST)
+        if form.is_valid():
+            form.save()
+            username = form.cleaned_data.get('username')
+            password = form.cleaned_data.get('password2')
+            user = authenticate(username=username, password=password)
+            login(request, user)
+            return redirect('home')
         else:
-            return render(request, 'account/register.html', {'form': RegistrationForm()})
+            print(form.errors)
+    else:
+        form = RegistrationForm()
+    return render(request, 'account/register.html', {'form': form})
 
+
+def disciplines(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    return render(request, 'account/disciplines.html')
+
+def management(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    return render(request, 'account/management.html')
+
+def alerts(request):
+    if not request.user.is_authenticated:
+        return redirect("login")
+    return render(request, 'account/alerts.html')
+
+def home_page(request):
+    return render(request, 'account/index.html')
 
 def logout_view(request):
     logout(request)
@@ -110,12 +120,17 @@ def account_view(request):
             })
 
     context['account_form'] = form
-    return render(request, "account/index.html", context)
+    return render(request, "account/profile.html", context)
 
 
-def interface(request):
+# def interface(request):
+#     gnew = GroupNames.objects.order_by('-id')
+#     return render(request, "account/interface.html", {'gnew': gnew})
+
+def show_groups(request):
     gnew = GroupNames.objects.order_by('-id')
-    return render(request, "account/interface.html", {'gnew': gnew})
+
+    return render(request, 'account/management/groups.html', {'gnew': gnew})
 
 
 class dinamic(DetailView):

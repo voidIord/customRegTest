@@ -1,0 +1,35 @@
+{% extends 'account/base.html' %}
+
+{% load static %}
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+			<h1>Профиль</h1>
+			<br>
+			  <div class="row">
+				  <div class="col-auto">
+					  <!-- Стандартная аватарка -->
+					<img src="{% static 'account/images/avatar.png' %}" width="192" height="192" align="left" alt="profile_image" class="me-5" />
+				  </div>
+				  <div class="col">
+					  <!-- Это пока тестовые данные, в реале берется из базы данных -->
+					<p>ФИО: Иванов Иван Иванович</p>
+					<p>Должность: доцент, кандидат физмат наук</p>
+					<p>Email: journal@example.com</p>
+					<p>Дата регистрации: 01.02.2021</p>
+				  </div>
+			  </div>
+			<!-- Нерабочие кнопки -->
+			<button type="button" class="btn btn-outline-secondary mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Изменить данные
+				<!-- Подразумевается, сменить аватарку, почту -->
+			</button>
+			<button type="button" class="btn btn-outline-secondary mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+				Сменить пароль
+				<!-- Смена пароля -->
+			</button>
+		</div>
+	</div>
+</main>
+{% endblock %}

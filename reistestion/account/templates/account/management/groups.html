@@ -1,0 +1,64 @@
+{% extends 'account/base.html' %}
+
+{% load static %}
+{% block content %}
+	<main class="container">
+		<div class="main_wrapper">
+			<div class="main_content">
+				<h1>Управление учебными группами</h1>
+				<br>
+				<!-- <form class="row g-3 d-flex justify-content-end">
+					<div class="col-auto">
+						<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+					</div>
+					<div class="col-auto mb-3">
+						<button class="btn btn-outline-success" type="submit">Search</button>
+					</div>
+				  </form> -->
+				  <!-- <p><a href="#!">МО-201</a></p>
+				  <p><a href="#!">ФИТ-201</a></p>
+				  <p><a href="#!">МО-191</a></p>
+				  <p><a href="#!">ФИТ-191</a></p>
+				  <p><a href="#!">ИСТ-201</a></p>
+				  <p><a href="#!">ИВТ-201</a></p>
+				  <p><a href="#!">ПИ-211</a></p> -->
+				  {% if gnew %}
+            		{% for el in gnew %}
+				 		<p><a href="#!">{{ el.GroupName }}</a></p>
+					{% endfor %}
+				  {% else %}
+				  	<p>Нет групп.</p>
+				  {% endif %}
+				  <button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
+					<span><b>&plus;</b> Добавить учебную группу</span>
+				  </button>
+				  <a class="btn btn-outline-primary mt-3" href="management.html">
+					<span>На главную</span>
+				  </a>
+			</div>
+			<br/>
+		</div>
+	</main>
+	<!-- Modal: Добавить группу -->
+	<form method="get">
+		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="exampleModalLabel">Добавить учебную группу</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<input class="form-control" name="subject_name" placeholder="Наименование">
+					</div>
+					<div class="modal-footer">
+					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+					<button type="submit" class="btn btn-success">Добавить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<script src="{% static 'account/js/script.js' %}"></script>
+{% endblock %}

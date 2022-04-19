@@ -1,0 +1,26 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+			<h1>Конструктор графика дисциплины</h1>
+			<br>
+			<!-- <form class="row g-3 d-flex justify-content-end">
+				<div class="col-auto">
+					<input class="form-control me-2" type="search" placeholder="Search" aria-label="Search">
+				</div>
+				<div class="col-auto mb-3">
+					<button class="btn btn-outline-success" type="submit">Search</button>
+				</div>
+			  </form> -->
+			  <p><a href="#!">Управление преподавателями</a></p>
+			  <p><a href="{% url 'groups' %}">Управление учебными группами</a></p>
+			  <p><a href="https://omgtu.ru/educational_activities/areas-of-training-implemented-in-omsk-university-in-accordance-with-gef-in/bachelor-of-gef-in-3-/">Рабочие программы</a></p>
+			  <p>...</p>
+			  <p><a href="#!">Панель администрирования</a></p>
+		</div>
+		<br/>
+	</div>
+</main>
+{% endblock %}

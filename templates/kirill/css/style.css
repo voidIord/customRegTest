@@ -11,10 +11,25 @@ html, body {
 }
 body {
 	hyphens: auto;
+	font-size: large;
+	background: #f0f0f0;
+}
+
+.header {
+	background: #fafafa;
+}
+
+.container {
+	background: #fafafa;
+	border-radius: .7em;
 }
 
 .dropdown-item {
 	font-size: 85%;
+}
+
+.btn {
+	font-size: inherit;
 }
 
 a {
@@ -38,6 +53,21 @@ a {
 
 .selectGroupForm {
 	width: 30%;
+}
+
+.footer {
+	position: fixed;
+	left: 0;
+	right: 0;
+	bottom: 0;
+	width: 100%;
+	background: #f0f0f0;
+	margin: auto;
+	padding: .5em;
+}
+
+.footer .container {
+	background: #f0f0f0;
 }
 
 /* overlay */
