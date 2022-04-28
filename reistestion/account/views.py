@@ -7,7 +7,7 @@ from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateFor
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
 from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
-from .models import Account, GroupNames
+from .models import Account, GroupNames, SubjectsNames
 
 
 def registration_view(request):
@@ -28,9 +28,11 @@ def registration_view(request):
 
 
 def disciplines(request):
+    gnew = SubjectsNames.objects.order_by('-id')
+
     if not request.user.is_authenticated:
         return redirect("login")
-    return render(request, 'account/disciplines.html')
+    return render(request, 'account/disciplines.html', {'gnew': gnew})
 
 def management(request):
     if not request.user.is_authenticated:
@@ -123,14 +125,21 @@ def account_view(request):
     return render(request, "account/profile.html", context)
 
 
-# def interface(request):
-#     gnew = GroupNames.objects.order_by('-id')
-#     return render(request, "account/interface.html", {'gnew': gnew})
+def interface(request):
+    gnew = GroupNames.objects.order_by('-id')
+    return render(request, "account/interface.html", {'gnew': gnew})
 
 def show_groups(request):
+    if request.method == 'POST':
+        gform = GroupForm(request.POST)
+        if gform.is_valid():
+            gform.save()
+
+    gform = GroupForm()
+
     gnew = GroupNames.objects.order_by('-id')
 
-    return render(request, 'account/management/groups.html', {'gnew': gnew})
+    return render(request, 'account/management/groups.html', {'gform': gform, 'gnew': gnew})
 
 
 class dinamic(DetailView):
@@ -140,7 +149,7 @@ class dinamic(DetailView):
 
     def get_context_data(self, **kwargs):
         context = super().get_context_data(**kwargs)
-        context['gn'] = Account.objects.get(pk=GroupNames.pk)
+        context['gn'] = Account.objects.filter(group=context['object'])
         return context
 
 

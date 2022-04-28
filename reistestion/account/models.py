@@ -251,7 +251,7 @@ class Semester(models.Model):
     Week18_6 = models.CharField('Неделя18_задание6', max_length=255, blank=True, unique=False)
     subjects = models.ManyToManyField(SubjectsNames, blank=True, through='SemestersSubjects')
 
-    def __int__(self):
+    def __str__(self):
         return self.Sem
 
     def get_absolut_url(self):

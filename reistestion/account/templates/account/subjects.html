@@ -4,33 +4,15 @@
 <main class="container">
 	<div class="main_wrapper">
 		<div class="main_content">
-			<h1>Список дисциплин</h1>
-			<br>
-				<p><a href="{% url 'display-table' %}">Программирование</a></p>
-				<!-- <p><a href="#!">Дискретная математика</a></p>
-				<p><a href="#!">Математический анализ</a></p>
-				<p><a href="#!">Алгебра</a></p>
-				<p><a href="#!">Теория чисел</a></p>
-				<p><a href="#!">Математическая логика</a></p>
-				<p><a href="#!">Оптимизация и принятие решений</a></p>
-				<p><a href="#!">Теория вероятностей</a></p>
-				<p><a href="#!">Базы данных</a></p>
-				<p><a href="#!">Машинное обучение</a></p> -->
-				{% if gnew %}
-					{% for el in gnew %}
-						<p><a href="#!">{{ el.SubjectName }}</a></p>
-					{% endfor %}
-				{% endif %}
-			<button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#addDiscipline">
-				<span><b>&plus;</b> Добавить дисциплину</span>
-			</button>
+			<h1>Семестры</h1>
+
 		</div>
 	</div>
 </main>
 
 <!-- Всплывающее окошко: Добавить дисциплину -->
 <!-- Должен добавить диспицлину в базу данных, форма пока нерабочая -->
-<form method="get">
+<!-- <form method="get">
 <div class="modal fade" id="addDiscipline" tabindex="-1" aria-labelledby="addDisciplineLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
@@ -48,5 +30,5 @@
 		</div>
 	</div>
 </div>
-</form>
+</form> -->
 {% endblock %}

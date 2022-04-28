@@ -1,0 +1,23 @@
+{% extends 'account/base.html' %}
+
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+        <h1>Графики дисциплин</h1>
+        {% if sem %}
+            {% for el in sem %}
+            <div class = "alert">
+                <!-- <h3>{{ el.Sem }}</h3> -->
+                <a href="{% url 'display-one-table' el.id %}">{{ el.Sem }}</a>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет записей</p>
+        {% endif %}
+        {# comments #}
+        <a href="{% url 'TableForSemester' %}"><li><button class="btn btn-info">Добавить график дисциплины</button></li></a>
+    </div>
+</div>
+</main>
+{% endblock %}

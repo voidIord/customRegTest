@@ -24,7 +24,7 @@
 				  <p><a href="#!">ПИ-211</a></p> -->
 				  {% if gnew %}
             		{% for el in gnew %}
-				 		<p><a href="#!">{{ el.GroupName }}</a></p>
+				 		<p><a href="{% url 'group-detail' el.id %}">{{ el.GroupName }}</a></p>
 					{% endfor %}
 				  {% else %}
 				  	<p>Нет групп.</p>
@@ -40,7 +40,7 @@
 		</div>
 	</main>
 	<!-- Modal: Добавить группу -->
-	<form method="get">
+	<form method="post">{% csrf_token %}
 		<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
 			<div class="modal-dialog modal-dialog-centered">
 				<div class="modal-content">
@@ -49,7 +49,7 @@
 					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 					</div>
 					<div class="modal-body">
-						<input class="form-control" name="subject_name" placeholder="Наименование">
+						<input class="form-control" name="GroupName" placeholder="Наименование">
 					</div>
 					<div class="modal-footer">
 					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>

@@ -1,0 +1,23 @@
+{% extends 'account/base.html' %}
+
+
+{% block title %}{{arti.GroupName}}{% endblock %}
+
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+        <h1>{{arti.GroupName}}</h1>
+        {% if gn %}
+            {% for el in gn %}
+            <div class = "alert">
+                <h3>{{ el.first_name }}</h3>
+            </div>
+            {% endfor %}
+        {% else %}
+            <p>Нет пользователей</p>
+        {% endif %}
+    </div>
+</div>
+</main>
+{% endblock %}
