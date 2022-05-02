@@ -1,5 +1,56 @@
+{% extends 'account/base.html' %}
+
+{% block title %}Изменение профиля{% endblock %}
+
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+      <h1>Изменение профиля</h1>
+      <br>
+			<form method="post" enctype="multipart/form-data">{% csrf_token %}
+        <p><input class="form-control w-50" type="email" name="email" id="inputEmail" placeholder="Email" value={{account_form.initial.email}}></p>
+        <p><input class="form-control w-50" type="text" name="username" id="inputUsername" placeholder="Имя" value="{{account_form.initial.username}}"></p>
+        <p><input class="form-control w-50" type="text" name="gender" id="inputGender" placeholder="Пол" value="{{account_form.initial.gender}}"></p>
+        <p><input class="form-control w-50" type="text" name="phone_no" id="inputPhoneno" placeholder="Номер телефона" value="{{account_form.initial.phone_no}}"></p>
+      
+        {% if request.user.prof_img %}
+          <p>Ваш аватар:</p>
+          <img src="{{ request.user.prof_img.url }}">
+          <p>Обновите аватарку:</p>
+        {% else %}
+          <p>Загрузите аватарку:</p>
+        {% endif %}
+      
+        <input type="file" id="inputImage" name="prof_img" accept="image/*" value="{{account_form.initial.prof_img}}"><br><br>
+      
+        {% for field in account_form %}
+            <p>
+              {% for error in field.errors %}
+                <p style="color: red">{{ error }}</p>
+              {% endfor %}
+            </p>
+        {% endfor %}
+      
+        {% if account_form.non_field_errors %}
+          <div style="color: red">
+            <p>{{account_form.non_field_errors}}</p>
+          </div>
+        {% endif %}
+      
+        {% if success_message %}
+          <p style="color:green; text-align: center;">{{success_message}}</p>
+        {% endif  %}
+      
+        <button class="btn btn-primary mt-3 mx-1" type="submit">Сохранить изменения</button>
+        <a class="btn btn-outline-secondary mt-3 mx-1" href="{% url 'profile' %}">Вернуться в профиль</a>
+      </form>
+		</div>
+	</div>
+</main>
+{% endblock %}
+
 <form method="post" enctype="multipart/form-data">{% csrf_token %}
-  <h1>Account</h1>
   <input type="email" name="email" id="inputEmail" placeholder="Email address" value={{account_form.initial.email}}><br><br>
   <input type="text" name="username" id="inputUsername" placeholder="First Name" value="{{account_form.initial.username}}"><br><br>
   <input type="text" name="gender" id="inputGender" placeholder="Gender" value="{{account_form.initial.gender}}"><br><br>

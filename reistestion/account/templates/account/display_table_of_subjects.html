@@ -4,19 +4,18 @@
 <main class="container">
 	<div class="main_wrapper">
 		<div class="main_content">
-        <h1>Графики дисциплин</h1>
+        <h1>Выберите семестр</h1>
+        <br>
         {% if sem %}
             {% for el in sem %}
-            <div class = "alert">
-                <!-- <h3>{{ el.Sem }}</h3> -->
-                <a href="{% url 'display-one-table' el.id %}">{{ el.Sem }}</a>
-            </div>
+                <p><a href="{% url 'display-one-table' el.id %}">{{ el.Sem }}</a></p>
             {% endfor %}
         {% else %}
             <p>Нет записей</p>
         {% endif %}
-        {# comments #}
-        <a href="{% url 'TableForSemester' %}"><li><button class="btn btn-info">Добавить график дисциплины</button></li></a>
+        <a class="btn btn-outline-success mt-3" href="{% url 'TableForSemester' %}">
+            <b>&plus;</b> Добавить график дисциплины
+        </a>
     </div>
 </div>
 </main>

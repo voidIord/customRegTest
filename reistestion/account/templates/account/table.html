@@ -1,45 +1,41 @@
+{% extends 'account/base.html' %}
 
-{% load static %}
-<!DOCTYPE html>
-<html lang="en">
-</head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Семестры</title>
-    <link rel="stylesheet" href="{% static '/account/table.css' %}">
-    <link rel="stylesheet" href="https://unicons.iconscout.com/release/v2.1.9/css/unicons.css">
-</head>
-<body>
+{% block title %}Добавление тем{% endblock %}
 
-    <div class="signin">
-
-        <h1>Форма для создания таблиц</h1>
-        <form method="post">
-            {% csrf_token %}
-            {{ qform.Sem}}<br>
-            {{ qform.Week1_1}}<br>
-            {{ qform.Week2_1}}<br>
-            {{ qform.Week3_1}}<br>
-            {{ qform.Week4_1}}<br>
-            {{ qform.Week5_1}}<br>
-            {{ qform.Week6_1}}<br>
-            {{ qform.Week7_1}}<br>
-            {{ qform.Week8_1}}<br>
-            {{ qform.Week9_1}}<br>
-            {{ qform.Week10_1}}<br>
-            {{ qform.Week11_1}}<br>
-            {{ qform.Week12_1}}<br>
-            {{ qform.Week13_1}}<br>
-            {{ qform.Week14_1}}<br>
-            {{ qform.Week15_1}}<br>
-            {{ qform.Week16_1}}<br>
-            {{ qform.Week17_1}}<br>
-            {{ qform.Week18_1}}<br>
-
-            <button type="submit" class="button buttonBlue">Добавить таблицу</button>
+{% block content %}
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+        <h1>Добавить темы по неделям</h1>
+        <br>
+        <!-- Надо будет переделать модель добавления графика дисциплины,
+        возможность менять название темы на сайте, а не в админке,
+        К релизу: отображение темы по выбранной группе и дисциплине, например:
+        SELECT тема FROM темы WHERE группа = мо AND дисциплина = алгебра -->
+        <form method="post">{% csrf_token %}
+            <p>Номер семестра: <input class="form-control w-50" name="Sem" placeholder="Номер семестра"></p>
+            <p>Неделя 1: <input class="form-control w-50" name="Week1_1" placeholder="Неделя 1"></p>
+            <p>Неделя 2: <input class="form-control w-50" name="Week2_1" placeholder="Неделя 2"></p>
+            <p>Неделя 3: <input class="form-control w-50" name="Week3_1" placeholder="Неделя 3"></p>
+            <p>Неделя 4: <input class="form-control w-50" name="Week4_1" placeholder="Неделя 4"></p>
+            <p>Неделя 5: <input class="form-control w-50" name="Week5_1" placeholder="Неделя 5"></p>
+            <p>Неделя 6: <input class="form-control w-50" name="Week6_1" placeholder="Неделя 6"></p>
+            <p>Неделя 7: <input class="form-control w-50" name="Week7_1" placeholder="Неделя 7"></p>
+            <p>Неделя 8: <input class="form-control w-50" name="Week8_1" placeholder="Неделя 8"></p>
+            <p>Неделя 9: <input class="form-control w-50" name="Week9_1" placeholder="Неделя 9"></p>
+            <p>Неделя 10: <input class="form-control w-50" name="Week10_1" placeholder="Неделя 10"></p>
+            <p>Неделя 11: <input class="form-control w-50" name="Week11_1" placeholder="Неделя 11"></p>
+            <p>Неделя 12: <input class="form-control w-50" name="Week12_1" placeholder="Неделя 12"></p>
+            <p>Неделя 13: <input class="form-control w-50" name="Week13_1" placeholder="Неделя 13"></p>
+            <p>Неделя 14: <input class="form-control w-50" name="Week14_1" placeholder="Неделя 14"></p>
+            <p>Неделя 15: <input class="form-control w-50" name="Week15_1" placeholder="Неделя 15"></p>
+            <p>Неделя 16: <input class="form-control w-50" name="Week16_1" placeholder="Неделя 16"></p>
+            <p>Неделя 17: <input class="form-control w-50" name="Week17_1" placeholder="Неделя 17"></p>
+            <p>Неделя 18: <input class="form-control w-50" name="Week18_1" placeholder="Неделя 18"></p>
+            <button type="submit" class="btn btn-success">Добавить таблицу</button>
+            <button type="reset" class="btn btn-outline-danger">Очистить</button>
         </form>
-
+        </div>
     </div>
-
-</body>
-</html>
+</main>
+{% endblock %}

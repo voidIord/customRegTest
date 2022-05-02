@@ -131,8 +131,8 @@ STATIC_URL = '/static/'
 
 DEFAULT_AUTO_FIELD = 'django.db.models.BigAutoField'
 
-MEDIA_URL: str = '/media/'
-MEDIA_ROOT = os.path.join(BASE_DIR, '../../../../PycharmProjects/customRegTest/reistestion/media')
+MEDIA_URL = '/media/'
+MEDIA_ROOT = os.path.join(BASE_DIR)
 
 if DEBUG:
     EMAIL_BACKEND = 'django.core.mail.backends.console.EmailBackend'

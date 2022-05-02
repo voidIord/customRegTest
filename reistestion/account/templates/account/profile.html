@@ -1,5 +1,7 @@
 {% extends 'account/base.html' %}
 
+{% block title %}Профиль{% endblock %}
+
 {% load static %}
 {% block content %}
 <main class="container">
@@ -10,25 +12,31 @@
 			  <div class="row">
 				  <div class="col-auto">
 					  <!-- Стандартная аватарка -->
-					<img src="{% static 'account/images/avatar.png' %}" width="192" height="192" align="left" alt="profile_image" class="me-5" />
+					<img src="../media/{{ user.prof_img }}" width="192" height="192" align="left" alt="profile_image" class="me-5" />
 				  </div>
 				  <div class="col">
 					  <!-- Это пока тестовые данные, в реале берется из базы данных -->
-					<p>ФИО: Иванов Иван Иванович</p>
-					<p>Должность: доцент, кандидат физмат наук</p>
-					<p>Email: journal@example.com</p>
-					<p>Дата регистрации: 01.02.2021</p>
+					<p>ФИО: {{ user.first_name }} {{ user.last_name }}</p>
+					<p>Должность: {{ user.group }}</p>
+					<p>Email: {{ user.email }}</p>
+					<p>Дата регистрации: {{ user.date_joined }}</p>
 				  </div>
 			  </div>
+			<a class="btn btn-outline-secondary mt-3 mx-1" href="{% url 'account' %}">
+				<span>Изменить данные</span>
+			</a>
+			<a class="btn btn-outline-secondary mt-3 mx-1" href="{% url 'changepwd' %}">
+				<span>Сменить пароль</span>
+			</a>
 			<!-- Нерабочие кнопки -->
-			<button type="button" class="btn btn-outline-secondary mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
+
+			<!-- <button type="button" class="btn btn-outline-secondary mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Изменить данные
-				<!-- Подразумевается, сменить аватарку, почту -->
 			</button>
 			<button type="button" class="btn btn-outline-secondary mt-3 mx-1" data-bs-toggle="modal" data-bs-target="#exampleModal">
 				Сменить пароль
-				<!-- Смена пароля -->
-			</button>
+			</button> -->
+			
 		</div>
 	</div>
 </main>

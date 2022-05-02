@@ -3,6 +3,7 @@ from .views import *
 
 urlpatterns = [
     path('', home_page, name='home'),
+    path('account/', profile, name='account'),
     path('disciplines/', disciplines, name='disciplines'),
     path('management/', management, name='management'),
     path('management/groups/', show_groups, name='groups'),
@@ -12,8 +13,8 @@ urlpatterns = [
     path('login/', login_view, name='login'),
     path('logout/', logout_view, name='logout'),
     path('display_table/', displaing_table_of_subjects, name='display-table'),
-    path('<int:pk>', dinamic.as_view(), name='group-detail'),
-    path('<int:pk>/display_one_table', displaing_table.as_view(), name='display-one-table'),
+    path('management/groups/<int:pk>', dinamic.as_view(), name='group-detail'),
+    path('display_table/<int:pk>/', displaing_table.as_view(), name='display-one-table'),
     path('table/', table_view, name='TableForSemester'),
     path('table_of_subject/', displaing_table_of_subjects, name='TableForSubjects')
 ]
@@ -23,9 +24,8 @@ urlpatterns += [
     path('<int:pk>/update', update.as_view(), name='group-update'),
     path('<int:pk>/delete', delete.as_view(), name='group-delete'),
 
-    path('account/', profile, name='profile'),
     path('image/', image_view, name='image'),
-    path('table/', table_view, name='TableForSemester'),
+    path('display_table/addtable/', table_view, name='TableForSemester'),
     path('table_of_subject/', displaing_table_of_subjects, name='TableForSubjects'),
     path('interface/', interface, name='interface'),
 

@@ -1,5 +1,7 @@
 {% extends 'account/base.html' %}
 
+{% block title %}Учебные группы{% endblock %}
+
 {% load static %}
 {% block content %}
 	<main class="container">
@@ -22,13 +24,17 @@
 				  <p><a href="#!">ИСТ-201</a></p>
 				  <p><a href="#!">ИВТ-201</a></p>
 				  <p><a href="#!">ПИ-211</a></p> -->
+				  
 				  {% if gnew %}
+				  	<div class="gc-for-group">
             		{% for el in gnew %}
 				 		<p><a href="{% url 'group-detail' el.id %}">{{ el.GroupName }}</a></p>
 					{% endfor %}
+					</div>
 				  {% else %}
 				  	<p>Нет групп.</p>
 				  {% endif %}
+				  
 				  <button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#exampleModal">
 					<span><b>&plus;</b> Добавить учебную группу</span>
 				  </button>
@@ -36,7 +42,6 @@
 					<span>На главную</span>
 				  </a>
 			</div>
-			<br/>
 		</div>
 	</main>
 	<!-- Modal: Добавить группу -->

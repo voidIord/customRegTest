@@ -1,12 +1,13 @@
 {% extends 'account/base.html' %}
 
+{% block title %}Список дисциплин{% endblock %}
+
 {% block content %}
 <main class="container">
 	<div class="main_wrapper">
 		<div class="main_content">
 			<h1>Список дисциплин</h1>
 			<br>
-				<p><a href="{% url 'display-table' %}">Программирование</a></p>
 				<!-- <p><a href="#!">Дискретная математика</a></p>
 				<p><a href="#!">Математический анализ</a></p>
 				<p><a href="#!">Алгебра</a></p>
@@ -17,12 +18,22 @@
 				<p><a href="#!">Базы данных</a></p>
 				<p><a href="#!">Машинное обучение</a></p> -->
 				{% if gnew %}
+				<div class="grid-container">
+					<p><a href="{% url 'display-table' %}">Алгоритмизация и программирование</a></p>
 					{% for el in gnew %}
 						<p><a href="#!">{{ el.SubjectName }}</a></p>
 					{% endfor %}
+				</div>
+				{% else %}
+				<p>Нет дисциплин, необходимо <span style="color: blue; text-decoration: underline;" data-bs-toggle="modal" data-bs-target="#addDiscipline">
+					добавить дисциплину
+				</span>.</p>
 				{% endif %}
 			<button type="button" class="btn btn-outline-success mt-3" data-bs-toggle="modal" data-bs-target="#addDiscipline">
 				<span><b>&plus;</b> Добавить дисциплину</span>
+			</button>
+			<button type="button" class="btn btn-outline-primary mt-3" data-bs-toggle="modal" data-bs-target="#importDiscipline">
+				<span><b>&plus;</b> Импорт из файла</span>
 			</button>
 		</div>
 	</div>
@@ -30,7 +41,7 @@
 
 <!-- Всплывающее окошко: Добавить дисциплину -->
 <!-- Должен добавить диспицлину в базу данных, форма пока нерабочая -->
-<form method="get">
+<form method="post">{% csrf_token %}
 <div class="modal fade" id="addDiscipline" tabindex="-1" aria-labelledby="addDisciplineLabel" aria-hidden="true">
 	<div class="modal-dialog modal-dialog-centered">
 		<div class="modal-content">
@@ -39,7 +50,7 @@
 			<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 			</div>
 			<div class="modal-body">
-				<input class="form-control" name="subject_name" placeholder="Наименование">
+				<input class="form-control" name="SubjectName" placeholder="Наименование">
 			</div>
 			<div class="modal-footer">
 			<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
@@ -49,4 +60,24 @@
 	</div>
 </div>
 </form>
+
+<form method="post">
+	<div class="modal fade" id="importDiscipline" tabindex="-1" aria-labelledby="importDisciplineLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="importDisciplineLabel">Импорт из файла</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<input type="file">
+				</div>
+				<div class="modal-footer">
+				<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+				<button type="submit" class="btn btn-primary">Импортировать</button>
+				</div>
+			</div>
+		</div>
+	</div>
+	</form>
 {% endblock %}

@@ -1,6 +1,5 @@
 {% extends 'account/base.html' %}
 
-
 {% block title %}{{arti.GroupName}}{% endblock %}
 
 {% block content %}
@@ -8,11 +7,10 @@
 	<div class="main_wrapper">
 		<div class="main_content">
         <h1>{{arti.GroupName}}</h1>
+        <br>
         {% if gn %}
             {% for el in gn %}
-            <div class = "alert">
-                <h3>{{ el.first_name }}</h3>
-            </div>
+                <p>{{ el.first_name }}</p>
             {% endfor %}
         {% else %}
             <p>Нет пользователей</p>

@@ -38,6 +38,7 @@ a {
 
 .table {
 	width: 90%;
+	display: border-box;
 }
 
 .modal-body input:not(:last-child) {
@@ -68,6 +69,18 @@ a {
 
 .footer .container {
 	background: #f0f0f0;
+}
+
+.grid-container {
+	display: grid;
+	grid-template-columns: repeat(3, 1fr);
+	grid-template-rows: repeat(3, 100%);
+}
+
+.gc-for-group {
+	display: grid;
+	grid-template-columns: repeat(5, 1fr);
+	grid-template-rows: repeat(5, 100%);
 }
 
 /* overlay */

@@ -43,7 +43,7 @@ class Account(AbstractBaseUser):
     username = models.CharField(max_length=30, unique=False)
     gender = models.CharField(max_length=10, null=True, blank=True)
     phone_no = models.CharField(max_length=15, null=True, blank=True)
-    prof_img = models.ImageField(upload_to=None, height_field=None, width_field=None, max_length=100, null=True,
+    prof_img = models.ImageField(upload_to='media/', height_field=None, width_field=None, max_length=100, null=True,
                                  blank=True)
 
     date_joined = models.DateTimeField(verbose_name='date joined', auto_now_add=True)
@@ -64,7 +64,7 @@ class Account(AbstractBaseUser):
     objects = MyAccountManager()
 
     def __str__(self):
-        return self.email
+        return self.username
 
     # For checking permissions. to keep it simple all admin have ALL permissons
     def has_perm(self, perm, obj=None):
@@ -75,7 +75,7 @@ class Account(AbstractBaseUser):
         return True
 
 
-    def get_absolut_url(self):
+    def get_absolute_url(self):
         return f'/qnew/{self.id}'
 
     class Meta:
@@ -89,8 +89,8 @@ class GroupNames(models.Model):
     def __str__(self):
         return self.GroupName
 
-    def get_absolut_url(self):
-        return f'/gnew/{self.id}'
+    def get_absolute_url(self):
+        return f'/management/groups/{self.id}'
 
     class Meta:
         verbose_name = 'Группа'
@@ -251,10 +251,7 @@ class Semester(models.Model):
     Week18_6 = models.CharField('Неделя18_задание6', max_length=255, blank=True, unique=False)
     subjects = models.ManyToManyField(SubjectsNames, blank=True, through='SemestersSubjects')
 
-    def __str__(self):
-        return self.Sem
-
-    def get_absolut_url(self):
+    def get_absolute_url(self):
         return f'/qnew/{self.id}'
 
     class Meta:

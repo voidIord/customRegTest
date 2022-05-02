@@ -1,25 +1,286 @@
 {% extends 'account/base.html' %}
 
 {% block content %}
-    <div class = "features">
-        <h3>{{ display.Sem }}</h3>
-        <div class = "alert">Неделя №1: {{ display.Week1_1}}<br></div>
-        <div class = "alert">Неделя №2: {{ display.Week2_1}}<br></div>
-        <div class = "alert">Неделя №3: {{ display.Week3_1}}<br></div>
-        <div class = "alert">{{ display.Week4_1}}<br></div>
-        <div class = "alert">{{ display.Week5_1}}<br></div>
-        <div class = "alert">{{ display.Week6_1}}<br></div>
-        <div class = "alert">{{ display.Week7_1}}<br></div>
-        <div class = "alert">{{ display.Week8_1}}<br></div>
-        <div class = "alert">{{ display.Week9_1}}<br></div>
-        <div class = "alert">{{ display.Week10_1}}<br></div>
-        <div class = "alert">{{ display.Week11_1}}<br></div>
-        <div class = "alert">{{ display.Week12_1}}<br></div>
-        <div class = "alert">{{ display.Week13_1}}<br></div>
-        <div class = "alert">{{ display.Week14_1}}<br></div>
-        <div class = "alert">{{ display.Week15_1}}<br></div>
-        <div class = "alert">{{ display.Week16_1}}<br></div>
-        <div class = "alert">{{ display.Week17_1}}<br></div>
-        <div class = "alert">{{ display.Week18_1}}<br></div>
+<main class="container">
+	<div class="main_wrapper">
+		<div class="main_content">
+        <h3>Семестр {{ display.Sem }}</h3>
+        <br>
+        <div class="table-responsive">
+          <table class="table">
+              <thead>
+                <tr>
+                  <th scope="col">#</th>
+                  <th scope="col">Тема</th>
+                  <th scope="col">Дата/время занятия</th>
+                  <th scope="col">Преподаватель</th>
+                  <th scope="col"></th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <th scope="row">1</th>
+                  <td>{{ display.Week1_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">2</th>
+                  <td>{{ display.Week2_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">3</th>
+                  <td>{{ display.Week3_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">4</th>
+                  <td>{{ display.Week4_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">5</th>
+                  <td>{{ display.Week5_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">6</th>
+                  <td>{{ display.Week6_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">7</th>
+                  <td>{{ display.Week7_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">8</th>
+                  <td>{{ display.Week8_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">9</th>
+                  <td>{{ display.Week9_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">10</th>
+                  <td>{{ display.Week10_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">11</th>
+                  <td>{{ display.Week11_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">12</th>
+                  <td>{{ display.Week12_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">13</th>
+                  <td>{{ display.Week13_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">14</th>
+                  <td>{{ display.Week14_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">15</th>
+                  <td>{{ display.Week15_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">16</th>
+                  <td>{{ display.Week16_1}}</td>
+                  <td>1.9.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">17</th>
+                  <td>{{ display.Week17_1}}</td>
+                  <td>1.10.2020, 15:00</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">18</th>
+                  <td>{{ display.Week18_1}}</td>
+                  <td>1.12.2099, 23:45</td>
+                  <td>Иванов И.И.</td>
+                  <td>&#128393;</td>
+                </tr>
+                <tr>
+                  <th scope="row">19</th>
+                  <td class="table-warning" colspan="4" data-bs-toggle="modal" data-bs-target="#exampleModal" role="button">резерв</td>
+                </tr>
+                <tr>
+                  <th scope="row">20</th>
+                  <td class="table-active" colspan="4" data-bs-toggle="modal" data-bs-target="#addTheme" role="button">Добавить</td>
+                </tr>
+              </tbody>
+            </table>
+          </div>
+        <div class="row mt-3">
+            <div class="col">
+                <button type="button" class="btn btn-outline-success" data-bs-toggle="modal" data-bs-target="#addTheme">
+                    <span><b>&plus;</b> Добавить тему</span>
+                </button>
+                <button type="button" class="btn btn-outline-danger" data-bs-toggle="modal" data-bs-target="#deleteModel">
+                    <span><b>&minus;</b> Удалить дисциплину</span>
+                </button>
+            </div>
+            <div class="col">
+                <button type="button" class="btn btn-outline-primary">
+                    <span>Посмотреть список тем</span>
+                </button>
+                <button type="button" class="btn btn-outline-primary">
+                    <span>Посмотреть рабочую программу</span>
+                </button>
+            </div>
+        </div>
+        <!-- <p>Неделя №1: {{ display.Week1_1}}<br></p>
+        <p>Неделя №2: {{ display.Week2_1}}<br></p>
+        <p>Неделя №3: {{ display.Week3_1}}<br></p>
+        <p>{{ display.Week4_1}}<br></p>
+        <p>{{ display.Week5_1}}<br></p>
+        <p>{{ display.Week6_1}}<br></p>
+        <p>{{ display.Week7_1}}<br></p>
+        <p>{{ display.Week8_1}}<br></p>
+        <p>{{ display.Week9_1}}<br></p>
+        <p>{{ display.Week10_1}}<br></p>
+        <p>{{ display.Week11_1}}<br></p>
+        <p>{{ display.Week12_1}}<br></p>
+        <p>{{ display.Week13_1}}<br></p>
+        <p>{{ display.Week14_1}}<br></p>
+        <p>{{ display.Week15_1}}<br></p>
+        <p>{{ display.Week16_1}}<br></p>
+        <p>{{ display.Week17_1}}<br></p>
+        <p>{{ display.Week18_1}}<br></p> -->
     </div>
+</div>
+</main>
+
+<!-- Modal: Перенести тему -->
+<form method="get">
+	<div class="modal fade" id="exampleModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true">
+		<div class="modal-dialog modal-dialog-centered">
+			<div class="modal-content">
+				<div class="modal-header">
+				<h5 class="modal-title" id="exampleModalLabel">Перенести тему</h5>
+				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+				</div>
+				<div class="modal-body">
+					<select class="form-select" name="subject_name" aria-label="Default select example">
+						<option selected>Выберите тему</option>
+						<option value="1">Отношения и множества</option>
+						<option value="2">Пределы</option>
+						<option value="3">Производные от неск.переменных</option>
+					</select>
+					<br>
+					<div class="row">
+						<div class="col">
+							<input type="date" class="form-control" name="subject_date">
+						</div>
+						<div class="col">
+							<input type="time" class="form-control" name="subject_time">
+						</div>
+					</div>
+				</div>
+				<div class="modal-footer">
+				<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+				<button type="submit" class="btn btn-warning">Перенести</button>
+				</div>
+			</div>
+		</div>
+	</div>
+</form>
+
+	<!-- Modal: Добавить тему -->
+	<form method="get">
+		<div class="modal fade" id="addTheme" tabindex="-1" aria-labelledby="addThemeLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="addThemeLabel">Добавить тему</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<input class="form-control" name="subject_name" placeholder="Наименование темы">
+						<div class="row">
+							<div class="col">
+								<input type="date" class="form-control" name="subject_date">
+							</div>
+							<div class="col">
+								<input type="time" class="form-control" name="subject_time">
+							</div>
+						</div>
+					</div>
+					<div class="modal-footer">
+					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+					<button type="submit" class="btn btn-success">Добавить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
+
+	<!-- Modal: Удалить дисциплину -->
+	<form method="get">
+		<div class="modal fade" id="deleteModel" tabindex="-1" aria-labelledby="deleteModelLabel" aria-hidden="true">
+			<div class="modal-dialog modal-dialog-centered">
+				<div class="modal-content">
+					<div class="modal-header">
+					<h5 class="modal-title" id="deleteModelLabel">Удаление дисциплины</h5>
+					<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+					</div>
+					<div class="modal-body">
+						<span>
+							Удалить дисциплину "Алгебра"?
+							<br>
+							Все данные будут безвозвратно утеряны.
+						</span>
+					</div>
+					<div class="modal-footer">
+					<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>
+					<button type="submit" class="btn btn-danger">Удалить</button>
+					</div>
+				</div>
+			</div>
+		</div>
+	</form>
 {% endblock %}

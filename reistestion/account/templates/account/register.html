@@ -8,17 +8,17 @@
 	  <div class="col-md-10 mx-auto col-lg-7">
 		<form method="post" class="p-4 p-md-5 border rounded-3">{% csrf_token %}
 		  <div class="form-floating mb-3">
-			<input type="text" name="username" class="form-control" id="fname" placeholder="Ваше ФИО" required>
+			<input type="text" name="username" class="form-control" id="fname" required>
 			<label for="fname">Ваше ФИО полностью</label>
 			{% if form.username.errors %} <p>{{ form.username.errors }}</p> {% endif %}
 		  </div>
 		  <div class="form-floating mb-3">
-			<input type="text" name="email" class="form-control" id="mail" placeholder="Ваш email" required>
+			<input type="text" name="email" class="form-control" id="mail" required>
 			<label for="mail">Ваш электронный адрес</label>
 			{% if form.email.errors %} <p>{{ form.email.errors }}</p> {% endif %}
 		  </div>
 		  <div class="form-floating mb-3">
-			<input type="text" name="phone_no" class="form-control" id="pnum" placeholder="Номер телефона" required>
+			<input type="text" name="phone_no" class="form-control" id="pnum" required>
 			<label for="pnum">Ваш номер телефона</label>
 			{% if form.phone_no.errors %} <p>{{ form.phone_no.errors }}</p> {% endif %}
 		  </div>
@@ -32,23 +32,24 @@
 			<label class="form-check-label" for="rb2">Женский</label>
 		  </div>
 		  <div class="form-floating mb-3">
-			<input type="password" name="password1" class="form-control" id="pwd" placeholder="Пароль" required>
+			<input type="password" name="password1" class="form-control" id="pwd" required>
 			<label for="pwd">Пароль</label>
 			{% if form.password1.errors %} <p>{{ form.password1.errors }}</p> {% endif %}
 		  </div>
 		  <div class="form-floating mb-3">
-			<input type="password" name="password2" class="form-control" id="pwdagain" placeholder="Пароль еще раз" required>
+			<input type="password" name="password2" class="form-control" id="pwdagain" required>
 			<label for="pwdagain">Пароль еще раз</label>
 			{% if form.password2.errors %} <p>{{ form.password2.errors }}</p> {% endif %}
 		  </div>
 		  <div class="checkbox mb-3">
 			<label>
-			  <input type="checkbox" value="accept-rules" required> Я обязуюсь вести себя хорошо и регулярно посещать наш сайт  	
+			  <input type="checkbox" value="accept-rules" required> Я обязуюсь вести себя <a href="https://www.uk-rf.com/">хорошо</a> и регулярно посещать наш сайт  	
 			  &#128521;
 			</label>
 		  </div>
 		  <div>
 			<button class="btn btn-primary" type="submit">Зарегистрироваться</button>
+			<a class="btn btn-outline-secondary" href="{% url 'login' %}">Уже зарегистрированы?</a>
 		  </div>
 		</form>
 	  </div>

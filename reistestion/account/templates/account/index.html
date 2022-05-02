@@ -1,5 +1,8 @@
 {% extends 'account/base.html' %}
 
+{% load static %}
+{% block title %}График дисциплины{% endblock %}
+
 {% block content %}
 <main class="container">
 	<div class="main_wrapper">
@@ -7,8 +10,18 @@
 			<p>Добро пожаловать на сайт <b>"График дисциплины"!</b></p>
 			<p>На нашем сайте Вы можете просмотреть график дисциплины, изменять его. Сам график дисциплины представляет с собой название дисциплины, модули и темы дисциплины, которые может редактироваться преподавателем.</p>
 			<p>Функционал сайта пока не полный, так как изменился дизайн сайта. Планируется внедрение добавление дисциплины в базу данных, привязать предметы к учебным группам и возможность редактировать темы для дисциплины.</p>
-			<p>В дальнейшем, разработчиками планируется внедрение искусственного интеллекта на наш сайт.</p>
-			<p>Эксперты, жду ваших предложений :)</p>
+			<br><br>
+			<p>Мы планируем добавить искусственный интеллект, который генерирует график дисциплины на основе рабочей программы ОмГТУ, соотносит пары по времени и кабинетам, стремясь минимизировать кол-во окон у студентов и предотвратить совпадение аудиторий.</p>
+			
+			<p>Эксперты, жду ваших вопросов и предложений.</p>
+			<div class="row">
+				<div class="col">
+					<a href="https://omgtu.ru"><img src="{% static 'account/images/logo.png' %}" alt="OmGTU" width="400px"></a>
+				</div>
+				<div class="col" style="border: 1px solid; font-size: 40px; background-color: #062145; position: relative;">
+					<div style="text-align: center; position: absolute; top: 28px;"><a style="color: white; text-decoration: underline;" href="http://vuc.omgtu.ru/">Ученье - свет</a><span style="color: white;">,</span> <a style="color: #020b17; text-decoration: underline;" href="https://contract.mil.ru/enlistment_contract/info.htm">а неученье - тьма.</a></div>
+				</div>
+			</div>
 		</div>
 	</div>
 </main>

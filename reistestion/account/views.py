@@ -28,11 +28,19 @@ def registration_view(request):
 
 
 def disciplines(request):
-    gnew = SubjectsNames.objects.order_by('-id')
+    if request.method == 'POST':
+        form = SubjectsNamesForm(request.POST)
+        if form.is_valid():
+            form.save()
+            return redirect('disciplines')
+
+    form = SubjectsNamesForm()
+
+    gnew = SubjectsNames.objects.order_by('SubjectName')
 
     if not request.user.is_authenticated:
         return redirect("login")
-    return render(request, 'account/disciplines.html', {'gnew': gnew})
+    return render(request, 'account/disciplines.html', {'form': form, 'gnew': gnew})
 
 def management(request):
     if not request.user.is_authenticated:
@@ -137,7 +145,7 @@ def show_groups(request):
 
     gform = GroupForm()
 
-    gnew = GroupNames.objects.order_by('-id')
+    gnew = GroupNames.objects.order_by('GroupName')
 
     return render(request, 'account/management/groups.html', {'gform': gform, 'gnew': gnew})
 
@@ -198,7 +206,7 @@ def table_view(request):
         qform = TableUpdateForm(request.POST)
         if qform.is_valid():
             qform.save()
-            return redirect('/account')
+            return redirect('/display_table')
 
     qform = TableUpdateForm()
 
