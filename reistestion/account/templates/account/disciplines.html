@@ -21,7 +21,7 @@
 				<div class="grid-container">
 					<p><a href="{% url 'display-table' %}">Алгоритмизация и программирование</a></p>
 					{% for el in gnew %}
-						<p><a href="#!">{{ el.SubjectName }}</a></p>
+						<p><a href="{% url 'view-disciplines' el.id %}">{{ el.SubjectName }}</a></p>
 					{% endfor %}
 				</div>
 				{% else %}
@@ -69,8 +69,11 @@
 				<h5 class="modal-title" id="importDisciplineLabel">Импорт из файла</h5>
 				<button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
 				</div>
-				<div class="modal-body">
-					<input type="file">
+				<div class="modal-body fs-6">
+					<input type="file" name="FileDiscipline" accept=".json,.csv,.xml,.yml" required>
+					<label>
+						<input type="checkbox" name="FillTopics" checked> Автоматически заполнить темы
+					</label>
 				</div>
 				<div class="modal-footer">
 				<button type="reset" class="btn btn-outline-secondary" data-bs-dismiss="modal" aria-label="Close">Закрыть</button>

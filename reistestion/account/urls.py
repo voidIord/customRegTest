@@ -5,6 +5,7 @@ urlpatterns = [
     path('', home_page, name='home'),
     path('account/', profile, name='account'),
     path('disciplines/', disciplines, name='disciplines'),
+    path('disciplines/<int:pk>', view_disciplines.as_view(), name='view-disciplines'),
     path('management/', management, name='management'),
     path('management/groups/', show_groups, name='groups'),
     path('alerts/', alerts, name='alerts'),

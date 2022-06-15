@@ -1,24 +1,25 @@
 from django.shortcuts import render, redirect
 from django.contrib.auth import login, authenticate, logout
-from .forms import RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm, SubjectsNamesForm, \
+from django.urls import reverse, reverse_lazy
+from django.views.generic.edit import FormMixin
+from .forms import AddTopicForm, RegistrationForm, AccountAuthenticationForm, AccountUpdateForm, ImageForm, SubjectsNamesForm, \
     GroupsSubjectsForm, SubjectsTeachersForm, SemestersSubjectsForm, ThemesNamesForm, ModulesNamesForm, \
     SubjectsModulesForm, LessonsNamesForm, TasksNamesForm, ModuleThemesForm, ThemesLessonsForm, LessonsTasksForm, \
         TasksStudentsForm, Semester
 from django.views.generic import DetailView, UpdateView, DeleteView, CreateView, ListView
 from .forms import GroupForm, TableUpdateForm
 from django.db import IntegrityError
-from .models import Account, GroupNames, SubjectsNames
+from .models import *
 
 
 def registration_view(request):
     if request.method == 'POST':
         form = RegistrationForm(request.POST)
         if form.is_valid():
-            form.save()
-            username = form.cleaned_data.get('username')
-            password = form.cleaned_data.get('password2')
-            user = authenticate(username=username, password=password)
-            login(request, user)
+            user = form.save()
+            # username = form.cleaned_data.get('username')
+            # password = form.cleaned_data.get('password2')
+            login(request, user, backend='django.contrib.auth.backends.ModelBackend')
             return redirect('home')
         else:
             print(form.errors)
@@ -149,6 +150,28 @@ def show_groups(request):
 
     return render(request, 'account/management/groups.html', {'gform': gform, 'gnew': gnew})
 
+
+class view_disciplines(FormMixin, DetailView):
+    model = SubjectsNames
+    template_name = 'account/disciplines/index.html'
+    context_object_name = 'subject'
+
+    form_class = AddTopicForm
+
+    def post(self, request, *args, **kwargs):
+        self.object = self.get_object()
+        form = self.get_form()
+
+        if form.is_valid():
+            my_data = form.save(commit=False)
+            my_data.save()
+            return redirect(f'/disciplines/{my_data.Subject_id}')
+
+    def get_context_data(self, **kwargs):
+        context = super().get_context_data(**kwargs)
+        context['subj'] = ViewSubjectTopics.objects.filter(Subject=context['object'])
+        context['form'] = AddTopicForm
+        return context
 
 class dinamic(DetailView):
     model = GroupNames

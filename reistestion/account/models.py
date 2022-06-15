@@ -74,7 +74,6 @@ class Account(AbstractBaseUser):
     def has_module_perms(self, app_label):
         return True
 
-
     def get_absolute_url(self):
         return f'/qnew/{self.id}'
 
@@ -104,6 +103,12 @@ class SubjectsNames(models.Model):
 
     def __str__(self):
         return self.SubjectName
+    
+    def __int__(self):
+        return self.pk
+    
+    def get_absolute_url(self):
+        return f'/disciplines/{self.id}'
 
     class Meta:
         verbose_name = 'Дисциплина'
@@ -132,6 +137,35 @@ class SubjectsTeachers(models.Model):
     class Meta:
         verbose_name = 'Связь: Предмет - Педагог'
         verbose_name_plural = 'Связь: Предмет - Педагог'
+
+
+# class SubjectTopics(models.Model):
+#     Subject = models.ForeignKey("SubjectsNames", on_delete=models.CASCADE, null=True, verbose_name='Subject_key')
+#     Topic = models.CharField('Название темы', max_length=64)
+    
+#     def __str__(self):
+#         return str(self.Topic)
+
+#     class Meta:
+#         verbose_name = 'Связь: Предмет - Тема'
+#         verbose_name_plural = 'Связь: Предмет - Тема'
+
+
+class ViewSubjectTopics(models.Model):
+    Group = models.ForeignKey("GroupNames", on_delete=models.CASCADE, null=True, verbose_name='Группа')
+    Subject = models.ForeignKey("SubjectsNames", on_delete=models.CASCADE, null=True, verbose_name='Предмет')
+    TopicName = models.CharField('Название темы', max_length=64)
+    DateTimeLesson = models.DateTimeField('Дата/время занятия', auto_now=False, auto_now_add=False)
+    Teacher = models.ForeignKey("Account", on_delete=models.CASCADE, null=True, verbose_name='Преподаватель')
+
+    def __int__(self):
+        return self.Subject
+    
+    def __str__(self):
+        return str(f"{self.Subject}: {self.TopicName}")
+    class Meta:
+        verbose_name = 'Темы дисциплины'
+        verbose_name_plural = 'Темы дисциплины'
 
 
 class Semester(models.Model):
@@ -250,6 +284,9 @@ class Semester(models.Model):
     Week17_6 = models.CharField('Неделя17_задание6', max_length=255, blank=True, unique=False)
     Week18_6 = models.CharField('Неделя18_задание6', max_length=255, blank=True, unique=False)
     subjects = models.ManyToManyField(SubjectsNames, blank=True, through='SemestersSubjects')
+
+    def __str__(self):
+        return str(self.Sem)
 
     def get_absolute_url(self):
         return f'/qnew/{self.id}'

@@ -102,3 +102,19 @@ a {
 		padding: 0;
 	}
 }
+
+@media (prefers-color-scheme: dark) {
+	body {
+		background-color: indigo;
+		filter: invert(1);
+	}
+	/* body, .footer {
+		background: #222222;
+	}
+	.header, .container {
+		background: #363636;
+	}
+	h1,h2,h3,h4,h5,h6,p {
+		color: white;
+	} */
+}

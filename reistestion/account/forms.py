@@ -2,8 +2,8 @@ from django import forms
 from django.contrib.auth.forms import UserCreationForm
 from django.contrib.auth import authenticate
 from .models import GroupNames, SemestersSubjects, SubjectsTeachers, ThemesNames, ModulesNames, SubjectsModules, \
-    LessonsNames, TasksNames, ModuleThemes, ThemesLessons, LessonsTasks, TasksStudents, GroupsSubjects, SubjectsNames
-from django.forms import ModelForm, TextInput
+    LessonsNames, TasksNames, ModuleThemes, ThemesLessons, LessonsTasks, TasksStudents, GroupsSubjects, SubjectsNames, ViewSubjectTopics
+from django.forms import ModelForm, Select, TextInput
 
 from .models import Account, Semester
 
@@ -69,6 +69,33 @@ class AccountUpdateForm(forms.ModelForm):
     def clean_prof_img(self):
         prof_img = self.cleaned_data['prof_img']
         return prof_img
+
+
+class AddTopicForm(ModelForm):
+    # Teacher = forms.CharField(widget=forms.HiddenInput())
+    class Meta:
+        model = ViewSubjectTopics
+        fields = ('Group', 'Subject', 'TopicName', 'DateTimeLesson', 'Teacher')
+    
+    def clean_Group(self):
+        Group = self.cleaned_data['Group']
+        return Group
+    
+    def clean_Subject(self):
+        Subject = self.cleaned_data['Subject']
+        return Subject
+
+    def clean_TopicName(self):
+        TopicName = self.cleaned_data['TopicName']
+        return TopicName
+    
+    def clean_DateTimeLesson(self):
+        DateTimeLesson = self.cleaned_data['DateTimeLesson']
+        return DateTimeLesson
+    
+    def clean_Teacher(self):
+        Teacher = self.cleaned_data['Teacher']
+        return Teacher
 
 
 class GroupForm(ModelForm):
